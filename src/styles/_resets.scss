@@ -1,0 +1,51 @@
+@import './variables';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0.5em 1em;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif !important;
+  &.primary {
+    background-color: $primary-red;
+    color: $white;
+  }
+  &:hover {
+    box-shadow: 0 0 0 3px rgba($color: $primary-red, $alpha: 0.5) !important;
+  }
+}
+section {
+  position: relative;
+  h2.title {
+    margin-bottom: 1.5em;
+    &::after {
+      content: '';
+      display: block;
+      height: 8px;
+      width: 130px;
+      background-color: $primary-red;
+      margin-top: 0.5em;
+    }
+  }
+}
+.row {
+  margin: 0;
+}

@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.navbar {
+  padding-top: 2em;
+  .navbar-toggler {
+    border: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .logo {
+    height: 85px;
+    width: 85px;
+    padding: 1em;
+    background-color: $primary-red;
+    color: $white;
+    @include justify-center;
+    h1 {
+      font-size: 1.5em;
+      font-weight: 600;
+      span {
+        display: block;
+        font-size: 0.85em;
+        font-weight: 300;
+      }
+    }
+  }
+  .nav-item {
+    margin: 0 1em;
+    font-weight: 600;
+  }
+}
+@media (max-width: $xs) {
+  .navbar {
+    .logo {
+      height: 70px;
+      width: 70px;
+      h1 {
+        font-size: 1.2em;
+      }
+    }
+    .nav-item {
+      margin: 0.5em 0 0 0;
+      @include justify-center;
+    }
+  }
+}
