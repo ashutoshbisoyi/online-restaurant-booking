@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 .menu-item {
   background-color: $white;
   padding: 1em;
@@ -11,5 +12,42 @@
     background-position: center;
     border-radius: 16px 16px 0 0;
     margin-bottom: 1em;
+  }
+  .title-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.6em;
+    h5 {
+      font-weight: 500;
+      font-size: 1.3em;
+      margin-bottom: 0;
+    }
+    span {
+      font-weight: 500;
+      color: $primary-red;
+      font-size: 1.4em;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-bottom: 2em;
+    li {
+      text-transform: capitalize;
+      padding: 0.1em 1em;
+      border: 1px solid $primary-red;
+      color: $primary-red;
+      border-radius: 25px;
+      background-color: rgba($color: $primary-red, $alpha: 0.1);
+      margin-right: 0.5em;
+      font-size: 0.8em;
+      &.veg {
+        border: 1px solid $veg-green;
+        color: $veg-green;
+        background-color: rgba($color: $veg-green, $alpha: 0.1);
+      }
+    }
   }
 }

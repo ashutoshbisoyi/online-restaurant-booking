@@ -37,7 +37,7 @@ const RestaurantMenu = ({ details }) => {
     ],
   };
   return (
-    <section className='container-fluid restaurant-menu'>
+    <section className='restaurant-menu'>
       <div className='container'>
         <h2>
           Menu at {name}{' '}
