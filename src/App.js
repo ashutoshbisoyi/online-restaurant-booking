@@ -11,15 +11,19 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //components
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import Home from './pages/Home';
+import Restaurant from './pages/Restaurant';
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <NavigationBar />
         <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
+          <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/restaurants/:restaurantName'
+            component={Restaurant}
+          />
         </Switch>
       </Router>
     </ThemeProvider>

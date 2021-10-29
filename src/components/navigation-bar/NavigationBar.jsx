@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavigationBar.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { RegularButton } from '../button/Button';
 import hamburgerIcon from '../../assets/hamburger.png';
 const NavigationBar = () => {
@@ -26,19 +26,19 @@ const NavigationBar = () => {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav mx-auto'>
             <li className='nav-item'>
-              <Link to='/hotels' className='nav-link'>
+              <NavLink to='/' className='nav-link'>
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <Link to='/guide' className='nav-link'>
+              <NavLink to='/guide' className='nav-link'>
                 How To
-              </Link>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <Link to='/about' className='nav-link'>
+              <NavLink to='/about' className='nav-link'>
                 About Us
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className='d-flex justify-content-center'>

@@ -1,0 +1,72 @@
+@import '../../../styles/variables';
+.restaurant-details {
+  padding: 3em 0;
+  .row {
+    .slick-dots li button:before {
+      color: $black;
+      opacity: 0.5;
+    }
+    .slick-dots li.slick-active button:before {
+      color: $primary-red;
+      opacity: 1;
+    }
+    .img-slide {
+      width: 100%;
+      img {
+        width: 100%;
+        height: 300px;
+        border-radius: 3px 3px 0 0;
+      }
+    }
+    .content {
+      position: relative;
+      h1 {
+        margin-bottom: 0.3em;
+      }
+      .description {
+        margin-top: 1.7em;
+        list-style: none;
+        li {
+          position: relative;
+          margin-bottom: 0.7em;
+          &::before {
+            content: url('../../../assets/right-mark.png');
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(-130%, -50%);
+          }
+        }
+      }
+      button {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .restaurant-details {
+    .row {
+      .content {
+        button {
+          position: relative;
+          margin-top: 1em;
+        }
+      }
+    }
+  }
+}
+@media (max-width: $sm) {
+  .restaurant-details {
+    .row {
+      .img-slide {
+        img {
+          height: 200px;
+        }
+      }
+    }
+  }
+}

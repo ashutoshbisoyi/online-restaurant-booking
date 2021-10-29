@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+.menu-item {
+  background-color: $white;
+  padding: 1em;
+  border-radius: 16px;
+  box-shadow: 5px 5px 10px #e3e3e3, -5px -5px 10px #ffffff;
+  .image {
+    width: 100%;
+    padding-top: 56.25%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 1em;
+  }
+}

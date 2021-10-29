@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+.restaurant-menu {
+  padding: 3em 0;
+  h2 {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .menu-track {
+    margin-bottom: 3em;
+    h4 {
+      position: relative;
+      margin-bottom: 0.3em;
+      padding-left: 1em;
+      &::after {
+        content: '';
+        display: block;
+        height: 5px;
+        width: 80px;
+        background-color: $primary-red;
+        margin-top: 0.5em;
+      }
+    }
+  }
+
+  .slick-track {
+    padding: 1em 0;
+  }
+}

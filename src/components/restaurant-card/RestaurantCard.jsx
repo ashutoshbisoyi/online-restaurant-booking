@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import { RegularButton } from '../button/Button';
 import locationIcon from '../../assets/location.png';
 import timingIcon from '../../assets/timing.png';
+import { Link } from 'react-router-dom';
 const RestaurantCard = ({ name, images, location, startTime, closeTime }) => {
   const settings = {
     dots: true,
@@ -37,9 +38,11 @@ const RestaurantCard = ({ name, images, location, startTime, closeTime }) => {
           {`${startTime} - ${closeTime}`}
         </span>
         <div>
-          <RegularButton variant='contained' color='primary'>
-            See Menu
-          </RegularButton>
+          <Link to={`/restaurants/${name}`}>
+            <RegularButton variant='contained' color='primary'>
+              See Menu
+            </RegularButton>
+          </Link>
         </div>
       </div>
     </div>
