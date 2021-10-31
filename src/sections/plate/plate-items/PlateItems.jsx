@@ -7,15 +7,13 @@ import hungryImg from '../../../assets/hungry.jpg';
 import PlateItemTable from '../../../components/plate-item-table/PlateItemTable';
 const PlateItems = () => {
   const itemsInPlate = useSelector(selectPlateItems);
-  // console.log(itemsInPlate);
   return (
     <section className='container-fluid plate-items'>
       <div className='container'>
         {itemsInPlate.length > 0 ? (
           <div>
             <h2 className='title'>
-              You have <span>{itemsInPlate.length}</span> items from{' '}
-              <span>Keyars</span> in your plate
+              You have <span>{itemsInPlate.length}</span> items in your plate
             </h2>
             <div className='table-container'>
               <PlateItemTable />

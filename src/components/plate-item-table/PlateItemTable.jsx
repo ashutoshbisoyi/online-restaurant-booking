@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './PlateItemTable.scss';
 import { useSelector } from 'react-redux';
 import { selectPlateItems } from '../../features/plateSlice';
 import PlateItem from '../plate-item/PlateItem';
 
 const PlateItemTable = () => {
+  const [subTotal, setSubTotal] = useState(0);
   const itemsInPlate = useSelector(selectPlateItems);
+  useEffect(() => {
+    setSubTotal(
+      itemsInPlate.reduce(
+        (accumulator, current) =>
+          accumulator + current.price * current.quantity,
+        0
+      )
+    );
+  }, [itemsInPlate]);
+
   return (
     <div className='plate-item-table'>
       <div className='row table-head d-none d-lg-flex'>
@@ -32,6 +43,13 @@ const PlateItemTable = () => {
           itemsInPlate.map((item, index) => (
             <PlateItem {...item} key={index} />
           ))}
+      </div>
+      <div className='sub-total'>
+        <div>
+          <h4>
+            Sub Total <div className='price'>₹{subTotal}</div>
+          </h4>
+        </div>
       </div>
     </div>
   );

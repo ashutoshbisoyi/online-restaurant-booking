@@ -10,7 +10,7 @@ import { selectPlateItems } from '../../features/plateSlice';
 const NavigationBar = () => {
   const itemsInPlate = useSelector(selectPlateItems);
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-transparent'>
+    <nav className='navbar sticky-top navbar-expand-lg navbar-light bg-white'>
       <div className='container'>
         <div className='logo'>
           <h1>

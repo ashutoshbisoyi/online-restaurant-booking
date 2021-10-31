@@ -1,6 +1,6 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 .plate-item-table {
-  // min-width: 1000px;
   .table-head {
     margin-bottom: 2em;
     background-color: $primary-red;
@@ -11,6 +11,26 @@
       font-family: 'Poppins', sans-serif;
       font-size: 1em;
       margin: 0;
+    }
+  }
+  .sub-total {
+    border-top: 2px solid #cccccc;
+    padding-top: 2em;
+    margin-top: 2em;
+    color: #555555;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    h4 {
+      @include align-center;
+      .price {
+        background-color: $primary-red;
+        font-weight: 700;
+        color: $white;
+        padding: 0.2em 0.4em;
+        margin-left: 1em;
+        border-radius: 3px;
+      }
     }
   }
 }

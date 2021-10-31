@@ -54,14 +54,14 @@ const PlateItem = ({
             <img
               src={minusIcon}
               alt='minus'
-              className='img-fluid'
+              className='img-fluid actionIcon'
               onClick={() => handleQuantityDecrement(id)}
             />
             <span className='mx-3'>{quantity}</span>
             <img
               src={plusIcon}
               alt='plus'
-              className='img-fluid'
+              className='img-fluid actionIcon'
               onClick={() => handleQuantityIncrement(id)}
             />
           </div>
