@@ -1,9 +1,9 @@
 import React from 'react';
-import './Restaurants.scss';
+import './FeaturedRestaurants.scss';
 import RestaurantCard from '../../../components/restaurant-card/RestaurantCard';
 import RestaurantsData from '../../../data/RestaurantData';
 import forkIcon from '../../../assets/fork.png';
-const Restaurants = () => {
+const FeaturedRestaurants = () => {
   return (
     <section className='container-fluid restaurants'>
       <div className='container'>
@@ -12,7 +12,7 @@ const Restaurants = () => {
           <img src={forkIcon} alt='fork' className='img-fluid ms-3' />
         </h2>
         <div className='row'>
-          {RestaurantsData.map((value, index) => (
+          {RestaurantsData.slice(0, 4).map((value, index) => (
             <div className='col-12 col-md-6 col-lg-3' key={index}>
               <RestaurantCard {...value} />
             </div>
@@ -23,4 +23,4 @@ const Restaurants = () => {
   );
 };
 
-export default Restaurants;
+export default FeaturedRestaurants;

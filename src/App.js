@@ -12,6 +12,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurant';
+import Plate from './pages/Plate';
+import Restaurants from './sections/resturants/Restaurants';
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -19,11 +21,13 @@ const App = () => {
         <NavigationBar />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route exact path='/restaurants' component={Restaurants} />
           <Route
             exact
             path='/restaurants/:restaurantName'
             component={Restaurant}
           />
+          <Route exact path='/plate' component={Plate} />
         </Switch>
       </Router>
     </ThemeProvider>

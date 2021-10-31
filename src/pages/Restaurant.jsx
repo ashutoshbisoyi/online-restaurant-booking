@@ -7,6 +7,7 @@ import RestaurantMenu from '../sections/restaurant/restaurant-menu/RestaurantMen
 const Restaurant = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   let { restaurantName } = useParams();
+
   useEffect(() => {
     const thisRestaurantData = RestaurantsData.filter(
       (restaurant) => restaurant.name === restaurantName

@@ -13,6 +13,7 @@ const RestaurantCard = ({ name, images, location, startTime, closeTime }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
   return (
     <div className='restaurant-card'>

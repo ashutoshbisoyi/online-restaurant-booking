@@ -6,3 +6,9 @@
 @import './mixins';
 @import './variables';
 @import './resets';
+
+.justify-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+.plate-items {
+  padding-bottom: 5em;
+  .container {
+    h2 {
+      span {
+        color: $primary-red;
+      }
+    }
+    .table-container {
+      overflow-x: auto;
+    }
+  }
+}

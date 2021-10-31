@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+.plate-item-table {
+  // min-width: 1000px;
+  .table-head {
+    margin-bottom: 2em;
+    background-color: $primary-red;
+    color: $white;
+    padding: 1em;
+    h5 {
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      margin: 0;
+    }
+  }
+}

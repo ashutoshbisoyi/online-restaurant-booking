@@ -1,7 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { SmallButton } from '../button/Button';
+import { addItemToPlate } from '../../features/plateSlice';
 import './MenuItem.scss';
-const MenuItem = ({ name, price, image, foodType, menuType }) => {
+
+const MenuItem = ({ name, price, image, foodType, menuType, id }) => {
+  const dispatch = useDispatch();
+  const handleAddToPlate = (id) => {
+    dispatch(
+      addItemToPlate({
+        id: id,
+        name: name,
+        price: price,
+        image: image,
+        foodType: foodType,
+        menuType: menuType,
+        quantity: 1,
+      })
+    );
+  };
   return (
     <div className='menu-item'>
       <div
@@ -17,7 +34,12 @@ const MenuItem = ({ name, price, image, foodType, menuType }) => {
         <li>{menuType}</li>
       </ul>
       <div>
-        <SmallButton variant='contained' size='small' fullWidth>
+        <SmallButton
+          variant='contained'
+          size='small'
+          fullWidth
+          onClick={() => handleAddToPlate(id)}
+        >
           Add to plate
         </SmallButton>
       </div>

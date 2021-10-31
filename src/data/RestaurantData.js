@@ -19,6 +19,8 @@ import plainRice from '../assets/menu-items/plain-rice.webp';
 import vegBiriyani from '../assets/menu-items/veg-biriyani.webp';
 import chickenBiriyani from '../assets/menu-items/chicken-biriyani.webp';
 import prawnBiriyani from '../assets/menu-items/prawn-biriyani.webp';
+import { v4 as uuidv4 } from 'uuid';
+
 const RestaurantsData = [
   {
     name: 'Keyars',
@@ -32,7 +34,8 @@ const RestaurantsData = [
         categoryName: 'Soup',
         items: [
           {
-            name: 'Chicken Soup',
+            id: uuidv4(),
+            name: 'Keyars Chicken Soup',
             price: 90,
             image: nonVegSoup,
             foodType: 'non-veg',
@@ -40,12 +43,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -54,12 +59,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -68,12 +75,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -82,6 +91,7 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
@@ -93,6 +103,7 @@ const RestaurantsData = [
         categoryName: 'Salad',
         items: [
           {
+            id: uuidv4(),
             name: 'Green Salad',
             price: 40,
             image: greenSalad,
@@ -101,6 +112,7 @@ const RestaurantsData = [
           },
           {
             name: 'Fruits Salad',
+            id: uuidv4(),
             image: fruitSalad,
             price: 60,
             foodType: 'veg',
@@ -113,6 +125,7 @@ const RestaurantsData = [
         items: [
           {
             name: 'Plain Rice',
+            id: uuidv4(),
             image: plainRice,
             price: 70,
             foodType: 'veg',
@@ -120,6 +133,7 @@ const RestaurantsData = [
           },
           {
             name: 'Veg Biriyani',
+            id: uuidv4(),
             image: vegBiriyani,
             price: 90,
             foodType: 'veg',
@@ -127,6 +141,7 @@ const RestaurantsData = [
           },
           {
             name: 'Chicken Biriyani',
+            id: uuidv4(),
             image: chickenBiriyani,
             price: 150,
             foodType: 'non-veg',
@@ -134,6 +149,7 @@ const RestaurantsData = [
           },
           {
             name: 'Prawn Biriyani',
+            id: uuidv4(),
             image: prawnBiriyani,
             price: 170,
             foodType: 'non-veg',
@@ -155,7 +171,8 @@ const RestaurantsData = [
         categoryName: 'Soup',
         items: [
           {
-            name: 'Chicken Soup',
+            id: uuidv4(),
+            name: 'Marwari Chicken Soup',
             price: 90,
             image: nonVegSoup,
             foodType: 'non-veg',
@@ -163,12 +180,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -177,6 +196,7 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
@@ -188,6 +208,7 @@ const RestaurantsData = [
         categoryName: 'Salad',
         items: [
           {
+            id: uuidv4(),
             name: 'Green Salad',
             price: 40,
             image: greenSalad,
@@ -196,6 +217,7 @@ const RestaurantsData = [
           },
           {
             name: 'Fruits Salad',
+            id: uuidv4(),
             image: fruitSalad,
             price: 60,
             foodType: 'veg',
@@ -208,6 +230,7 @@ const RestaurantsData = [
         items: [
           {
             name: 'Plain Rice',
+            id: uuidv4(),
             image: plainRice,
             price: 70,
             foodType: 'veg',
@@ -215,6 +238,7 @@ const RestaurantsData = [
           },
           {
             name: 'Veg Biriyani',
+            id: uuidv4(),
             image: vegBiriyani,
             price: 90,
             foodType: 'veg',
@@ -222,6 +246,7 @@ const RestaurantsData = [
           },
           {
             name: 'Chicken Biriyani',
+            id: uuidv4(),
             image: chickenBiriyani,
             price: 150,
             foodType: 'non-veg',
@@ -229,6 +254,7 @@ const RestaurantsData = [
           },
           {
             name: 'Prawn Biriyani',
+            id: uuidv4(),
             image: prawnBiriyani,
             price: 170,
             foodType: 'non-veg',
@@ -250,7 +276,8 @@ const RestaurantsData = [
         categoryName: 'Soup',
         items: [
           {
-            name: 'Chicken Soup',
+            id: uuidv4(),
+            name: 'Truptee Chicken Soup',
             price: 90,
             image: nonVegSoup,
             foodType: 'non-veg',
@@ -258,12 +285,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -272,6 +301,7 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
@@ -283,6 +313,7 @@ const RestaurantsData = [
         categoryName: 'Salad',
         items: [
           {
+            id: uuidv4(),
             name: 'Green Salad',
             price: 40,
             image: greenSalad,
@@ -291,6 +322,7 @@ const RestaurantsData = [
           },
           {
             name: 'Fruits Salad',
+            id: uuidv4(),
             image: fruitSalad,
             price: 60,
             foodType: 'veg',
@@ -303,6 +335,7 @@ const RestaurantsData = [
         items: [
           {
             name: 'Plain Rice',
+            id: uuidv4(),
             image: plainRice,
             price: 70,
             foodType: 'veg',
@@ -310,6 +343,7 @@ const RestaurantsData = [
           },
           {
             name: 'Veg Biriyani',
+            id: uuidv4(),
             image: vegBiriyani,
             price: 90,
             foodType: 'veg',
@@ -317,6 +351,7 @@ const RestaurantsData = [
           },
           {
             name: 'Chicken Biriyani',
+            id: uuidv4(),
             image: chickenBiriyani,
             price: 150,
             foodType: 'non-veg',
@@ -324,6 +359,7 @@ const RestaurantsData = [
           },
           {
             name: 'Prawn Biriyani',
+            id: uuidv4(),
             image: prawnBiriyani,
             price: 170,
             foodType: 'non-veg',
@@ -345,6 +381,7 @@ const RestaurantsData = [
         categoryName: 'Soup',
         items: [
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -353,12 +390,14 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
             menuType: 'starter',
           },
           {
+            id: uuidv4(),
             name: 'Chicken Soup',
             price: 90,
             image: nonVegSoup,
@@ -367,6 +406,7 @@ const RestaurantsData = [
           },
           {
             name: 'Tomato Soup',
+            id: uuidv4(),
             image: vegSoup,
             price: 70,
             foodType: 'veg',
@@ -378,6 +418,7 @@ const RestaurantsData = [
         categoryName: 'Salad',
         items: [
           {
+            id: uuidv4(),
             name: 'Green Salad',
             price: 40,
             image: greenSalad,
@@ -386,6 +427,7 @@ const RestaurantsData = [
           },
           {
             name: 'Fruits Salad',
+            id: uuidv4(),
             image: fruitSalad,
             price: 60,
             foodType: 'veg',
@@ -398,6 +440,7 @@ const RestaurantsData = [
         items: [
           {
             name: 'Plain Rice',
+            id: uuidv4(),
             image: plainRice,
             price: 70,
             foodType: 'veg',
@@ -405,6 +448,7 @@ const RestaurantsData = [
           },
           {
             name: 'Veg Biriyani',
+            id: uuidv4(),
             image: vegBiriyani,
             price: 90,
             foodType: 'veg',
@@ -412,6 +456,7 @@ const RestaurantsData = [
           },
           {
             name: 'Chicken Biriyani',
+            id: uuidv4(),
             image: chickenBiriyani,
             price: 150,
             foodType: 'non-veg',
@@ -419,6 +464,459 @@ const RestaurantsData = [
           },
           {
             name: 'Prawn Biriyani',
+            id: uuidv4(),
+            image: prawnBiriyani,
+            price: 170,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Eram Rooftop',
+    images: [res1, res2, res3, res4],
+    location: 'Shastri Nagar, Unit 4, Bhubaneshwar',
+    startTime: '7.00 am',
+    closeTime: '11.00 pm',
+    foodType: 'both',
+    menu: [
+      {
+        categoryName: 'Soup',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Keyars Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Salad',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Green Salad',
+            price: 40,
+            image: greenSalad,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Fruits Salad',
+            id: uuidv4(),
+            image: fruitSalad,
+            price: 60,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Rice',
+        items: [
+          {
+            name: 'Plain Rice',
+            id: uuidv4(),
+            image: plainRice,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Veg Biriyani',
+            id: uuidv4(),
+            image: vegBiriyani,
+            price: 90,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Chicken Biriyani',
+            id: uuidv4(),
+            image: chickenBiriyani,
+            price: 150,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Prawn Biriyani',
+            id: uuidv4(),
+            image: prawnBiriyani,
+            price: 170,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Chill Out',
+    images: [res5, res6],
+    location: 'Chandrasekharpur, Bhubaneshwar',
+    startTime: '12.00 pm',
+    closeTime: '10.00 pm',
+    foodType: 'both',
+    menu: [
+      {
+        categoryName: 'Soup',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Marwari Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Salad',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Green Salad',
+            price: 40,
+            image: greenSalad,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Fruits Salad',
+            id: uuidv4(),
+            image: fruitSalad,
+            price: 60,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Rice',
+        items: [
+          {
+            name: 'Plain Rice',
+            id: uuidv4(),
+            image: plainRice,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Veg Biriyani',
+            id: uuidv4(),
+            image: vegBiriyani,
+            price: 90,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Chicken Biriyani',
+            id: uuidv4(),
+            image: chickenBiriyani,
+            price: 150,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Prawn Biriyani',
+            id: uuidv4(),
+            image: prawnBiriyani,
+            price: 170,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'The Kanopy',
+    images: [res7, res8, res9],
+    location: 'KIIT Square, Patia, Bhubaneshwar',
+    startTime: '7.00 am',
+    closeTime: '10.30 pm',
+    foodType: 'veg',
+    menu: [
+      {
+        categoryName: 'Soup',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Truptee Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Salad',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Green Salad',
+            price: 40,
+            image: greenSalad,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Fruits Salad',
+            id: uuidv4(),
+            image: fruitSalad,
+            price: 60,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Rice',
+        items: [
+          {
+            name: 'Plain Rice',
+            id: uuidv4(),
+            image: plainRice,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Veg Biriyani',
+            id: uuidv4(),
+            image: vegBiriyani,
+            price: 90,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Chicken Biriyani',
+            id: uuidv4(),
+            image: chickenBiriyani,
+            price: 150,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Prawn Biriyani',
+            id: uuidv4(),
+            image: prawnBiriyani,
+            price: 170,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Breeze',
+    images: [res10, res11, res12],
+    location: 'Jayadev Vihar, Bhubaneshwar',
+    startTime: '11.30 am',
+    closeTime: '10.00 pm',
+    foodType: 'non-veg',
+    menu: [
+      {
+        categoryName: 'Soup',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            id: uuidv4(),
+            name: 'Chicken Soup',
+            price: 90,
+            image: nonVegSoup,
+            foodType: 'non-veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Tomato Soup',
+            id: uuidv4(),
+            image: vegSoup,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Salad',
+        items: [
+          {
+            id: uuidv4(),
+            name: 'Green Salad',
+            price: 40,
+            image: greenSalad,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+          {
+            name: 'Fruits Salad',
+            id: uuidv4(),
+            image: fruitSalad,
+            price: 60,
+            foodType: 'veg',
+            menuType: 'starter',
+          },
+        ],
+      },
+      {
+        categoryName: 'Rice',
+        items: [
+          {
+            name: 'Plain Rice',
+            id: uuidv4(),
+            image: plainRice,
+            price: 70,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Veg Biriyani',
+            id: uuidv4(),
+            image: vegBiriyani,
+            price: 90,
+            foodType: 'veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Chicken Biriyani',
+            id: uuidv4(),
+            image: chickenBiriyani,
+            price: 150,
+            foodType: 'non-veg',
+            menuType: 'main-course',
+          },
+          {
+            name: 'Prawn Biriyani',
+            id: uuidv4(),
             image: prawnBiriyani,
             price: 170,
             foodType: 'non-veg',

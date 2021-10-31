@@ -1,0 +1,8 @@
+@import '../../../styles/variables';
+.plate-hero {
+  padding: 3em 0;
+  .banner {
+    min-height: 40vh;
+    background-color: $primary-red;
+  }
+}

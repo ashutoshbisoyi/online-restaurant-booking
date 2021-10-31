@@ -27,7 +27,23 @@
   }
   .nav-item {
     margin: 0 1em;
-    font-weight: 600;
+    font-weight: 500;
+  }
+  .nav-active {
+    &::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-red;
+    }
+  }
+}
+@media (max-width: $md) {
+  .navbar {
+    .nav-item {
+      @include justify-center;
+    }
   }
 }
 @media (max-width: $xs) {
