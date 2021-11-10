@@ -4,6 +4,7 @@ const shortid = require('shortid');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const Razorpay = require('razorpay');
+const crypto = require('crypto');
 
 app.use(cors());
 dotenv.config();
@@ -15,6 +16,26 @@ const razorpay = new Razorpay({
 });
 
 const PORT = process.env.PORT || 3000;
+
+app.post('/verification', (req, res) => {
+    // do a validation
+    const secret = process.env.SECRET;
+    console.log(req.body);
+
+    const shasum = crypto.createHmac('sha256', secret);
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest('hex');
+    console.log(digest, req.headers['x-razorpay-signature']);
+
+    if (digest === req.headers['x-razorpay-signature']) {
+        console.log('request is legit');
+        // process it
+        // require('fs').writeFileSync('payment1.json', JSON.stringify(req.body, null, 4))
+    } else {
+        // pass it
+    }
+    res.json({ status: 'ok' })
+})
 
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
