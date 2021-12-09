@@ -13,30 +13,31 @@ const restroSchema = new mongoose.Schema({
     location: {
         type: String,
         required: true,
-        min:3
+        min: 3
     },
     openTime: {
         type: String,
         required: true,
-        min:3
+        min: 3
     },
     closeTime: {
         type: String,
         required: true,
-        min:3
+        min: 3
     },
     foodCategory: {
         type: String,
         required: true,
-        min:3
+        min: 3
     },
     availability: {
         type: Boolean,
         required: true
     },
+    images: [String],
     createdAt: {
         type: Date,
-        default:Date.now
+        default: Date.now
     }
 });
 

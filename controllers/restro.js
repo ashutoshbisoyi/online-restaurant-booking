@@ -11,6 +11,7 @@ const addRestro = async (req, res) => {
         closeTime: req.body.closeTime,
         foodCategory: req.body.foodCategory,
         availability: req.body.availability,
+        images: req.body.images
     });
     try {
         const savedRestro = await restro.save();
