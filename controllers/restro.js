@@ -36,7 +36,32 @@ const viewRestro = async (req, res) => {
     }
 };
 
+const updateRestro = async (req, res) => {
+    const restaurantID = req.params.id;
+    const data = req.body;
+
+    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
+    if (!restroDetails)
+        return res.status(404).json({ status: false });
+
+    await restroSchema.findByIdAndUpdate(restroDetails._id, { ...data }, { new: true });
+    res.status(200).json({ status: true });
+};
+
+const deleteRestro = async (req, res) => {
+    const restaurantID = req.params.id;
+
+    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
+    if (!restroDetails)
+        return res.status(404).json({ status: false });
+
+    await restroSchema.findByIdAndRemove(restroDetails._id);
+    res.status(200).json({ status: true });
+};
+
 module.exports = {
     addRestro,
-    viewRestro
+    viewRestro,
+    updateRestro,
+    deleteRestro
 };
