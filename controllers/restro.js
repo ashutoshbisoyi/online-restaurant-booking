@@ -9,7 +9,8 @@ const addRestro = async (req, res) => {
         location: req.body.location,
         openTime: req.body.openTime,
         closeTime: req.body.closeTime,
-        foodCategory: req.body.foodCategory,
+        veg: req.body.veg,
+        nonveg: req.body.nonveg,
         availability: req.body.availability,
         images: req.body.images
     });
@@ -21,6 +22,7 @@ const addRestro = async (req, res) => {
             status: true
         });
     } catch (err) {
+        // console.log(err);
         res.status(400).json({
             status: false
         });

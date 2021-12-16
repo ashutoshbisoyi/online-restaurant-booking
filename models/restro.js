@@ -44,10 +44,13 @@ const restroSchema = new mongoose.Schema({
         required: true,
         min: 3
     },
-    foodCategory: {
-        type: String,
-        required: true,
-        min: 3
+    veg: {
+        type: Boolean,
+        required: true
+    },
+    nonveg: {
+        type: Boolean,
+        required: true
     },
     availability: {
         type: Boolean,
