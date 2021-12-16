@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 
+const imageSchema = new mongoose.Schema({
+    base64: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    size: {
+        type: Number,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    }
+});
+
 const restroSchema = new mongoose.Schema({
     restaurantID: {
         type: String,
@@ -34,7 +53,7 @@ const restroSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    images: [String],
+    images: [imageSchema],
     createdAt: {
         type: Date,
         default: Date.now
