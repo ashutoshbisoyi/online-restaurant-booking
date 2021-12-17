@@ -38,6 +38,16 @@ const viewRestro = async (req, res) => {
     }
 };
 
+const viewRestroID = async (req, res) => {
+    const restaurantID = req.params.id;
+
+    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
+    if (!restroDetails)
+        return res.status(404).json({ status: false });
+    else
+        res.status(200).json(restroDetails);
+};
+
 const updateRestro = async (req, res) => {
     const restaurantID = req.params.id;
     const data = req.body;
@@ -64,6 +74,7 @@ const deleteRestro = async (req, res) => {
 module.exports = {
     addRestro,
     viewRestro,
+    viewRestroID,
     updateRestro,
     deleteRestro
 };
