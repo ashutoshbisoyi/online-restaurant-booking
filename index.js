@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 const restroRoute = require("./routes/restro");
+const categoryRoute = require("./routes/category");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 app.use(cors());
 app.use(express.json());
 app.use("/api", restroRoute);
+app.use("/api/restaurant", categoryRoute);
 
 
 app.listen(PORT, () => {

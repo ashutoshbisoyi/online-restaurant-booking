@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const categorySchema = require('./category');
 
 const imageSchema = new mongoose.Schema({
     base64: {
@@ -22,7 +23,7 @@ const imageSchema = new mongoose.Schema({
 const restroSchema = new mongoose.Schema({
     restaurantID: {
         type: String,
-        required: true,
+        required: true
     },
     restaurantName: {
         type: String,
@@ -57,10 +58,11 @@ const restroSchema = new mongoose.Schema({
         required: true
     },
     images: [imageSchema],
+    category: [categorySchema.categorySchema],
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
 });
 
 module.exports = mongoose.model('restroSchema', restroSchema);
