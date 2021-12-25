@@ -13,7 +13,7 @@ const addCategory = async (req, res) => {
     }
     const category = new categorySchema({
         restaurantID: params,
-        categoryID: uniqid('EatIt-Cat'),
+        categoryID: uniqid('EatIt-Cat-'),
         categoryName: req.body.categoryName
     });
     try {
