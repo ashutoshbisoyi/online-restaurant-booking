@@ -1,40 +1,100 @@
-const restroSchema = require('../models/restro');
+const categorySchema = require("../models/category");
+const uniqid = require('uniqid');
 
 const addCategory = async (req, res) => {
-    const restaurantID = req.params.restaurantID;
-    const data = { category: req.body };
+    const params = req.params.restaurantID;
 
-    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
-    if (!restroDetails)
+    const categoryCheck = await categorySchema
+        .find({ "restaurantID": params });
+    for (var i = 0; i < categoryCheck.length; i++) {
+        if (categoryCheck[i].categoryName === req.body.categoryName) {
+            return res.status(400).json("duplicate category name");
+        }
+    }
+    const category = new categorySchema({
+        restaurantID: params,
+        categoryID: uniqid('EatIt-Cat'),
+        categoryName: req.body.categoryName
+    });
+    try {
+        const savedCat = await category.save();
+        res.status(201).json({
+            categoryID: savedCat.categoryID,
+            restaurantID: savedCat.restaurantID,
+            status: true
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({
+            status: false
+        });
+    }
+};
+
+// view all categories
+const viewCategory = async (req, res) => {
+    try {
+        const category = await categorySchema.find();
+        res.status(200).json(category);
+    } catch (err) {
+        return res.status(404).json({ status: false });
+    }
+};
+
+// view all categories of the particular restro
+const viewCategoryByID = async (req, res) => {
+    try {
+        const category = await categorySchema.find({ "restaurantID": req.params.restaurantID });
+        if (category.length == 0)
+            res.status(404).json({ status: false });
+        else
+            res.status(200).json(category);
+    } catch (err) {
+        return res.status(404).json({ status: false });
+    }
+};
+
+// view categoryByID
+const viewCategoryID = async (req, res) => {
+    const categoryID = req.params.categoryID;
+
+    const category = await categorySchema.findOne({ "categoryID": categoryID });
+    if (!category)
+        return res.status(404).json({ status: false });
+    else
+        res.status(200).json(category);
+};
+
+// update categoryByID
+const updateCategoryByID = async (req, res) => {
+    const categoryID = req.params.categoryID;
+    const data = req.body;
+
+    const category = await categorySchema.findOne({ "categoryID": categoryID });
+    if (!category)
         return res.status(404).json({ status: false });
 
-    await restroSchema.findByIdAndUpdate(restroDetails._id, { ...data }, { new: true });
+    await categorySchema.findByIdAndUpdate(category._id, { ...data }, { new: true });
     res.status(200).json({ status: true });
 };
 
-const viewCatByRestroID = async (req, res) => {
-    const restaurantID = req.params.restaurantID;
+// delete categoryByID
+const deleteCategoryByID = async (req, res) => {
+    const categoryID = req.params.categoryID;
 
-    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
-    if (!restroDetails)
-        return res.status(404).json({ status: false });
-    else
-        res.status(200).json(restroDetails.category);
-};
-const deleteCategory = async (req, res) => {
-    const restaurantID = req.params.restaurantID;
-    const data = {category:[]};
-
-    const restroDetails = await restroSchema.findOne({ "restaurantID": restaurantID });
-    if (!restroDetails)
+    const category = await categorySchema.findOne({ "categoryID": categoryID });
+    if (!category)
         return res.status(404).json({ status: false });
 
-    await restroSchema.findByIdAndUpdate(restroDetails._id, { ...data }, { new: true });
+    await categorySchema.findByIdAndRemove(category._id);
     res.status(200).json({ status: true });
 };
 
 module.exports = {
     addCategory,
-    viewCatByRestroID,
-    deleteCategory
-};
+    viewCategory,
+    viewCategoryByID,
+    viewCategoryID,
+    updateCategoryByID,
+    deleteCategoryByID
+}

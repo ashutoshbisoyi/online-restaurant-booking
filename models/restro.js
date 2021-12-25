@@ -58,7 +58,6 @@ const restroSchema = new mongoose.Schema({
         required: true
     },
     images: [imageSchema],
-    category: [categorySchema.categorySchema],
     createdAt: {
         type: Date,
         default: Date.now

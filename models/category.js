@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
-const itemSchema = require('./item');
 
 const categorySchema = new mongoose.Schema({
+    restaurantID: {
+        type: String,
+        required: true
+    },
+    categoryID: {
+        type: String,
+        required: true,
+        unique: true
+    },
     categoryName: {
         type: String,
         required: true,
@@ -10,8 +18,7 @@ const categorySchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    },
-    items: [itemSchema.itemSchema]
+    }
 });
 
-module.exports.categorySchema = categorySchema;
+module.exports = mongoose.model('category', categorySchema);;
