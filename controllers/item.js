@@ -47,10 +47,7 @@ const viewItems = async (req, res) => {
 const viewItemByID = async (req, res) => {
     try {
         const item = await itemSchema.find({ "categoryID": req.params.categoryID });
-        if (item.length == 0)
-            res.status(404).json({ status: false });
-        else
-            res.status(200).json(item);
+        res.status(200).json(item);
     } catch (err) {
         return res.status(404).json({ status: false });
     }

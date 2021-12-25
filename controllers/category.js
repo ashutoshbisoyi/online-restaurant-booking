@@ -45,10 +45,7 @@ const viewCategory = async (req, res) => {
 const viewCategoryByID = async (req, res) => {
     try {
         const category = await categorySchema.find({ "restaurantID": req.params.restaurantID });
-        if (category.length == 0)
-            res.status(404).json({ status: false });
-        else
-            res.status(200).json(category);
+        res.status(200).json(category);
     } catch (err) {
         return res.status(404).json({ status: false });
     }
