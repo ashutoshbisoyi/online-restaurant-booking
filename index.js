@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const restroRoute = require("./routes/restro");
 const categoryRoute = require("./routes/category");
+const itemRoute = require("./routes/item");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
+app.use("/api/restaurant/category", itemRoute);
 
 
 app.listen(PORT, () => {

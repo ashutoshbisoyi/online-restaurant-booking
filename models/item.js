@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
+    categoryID: {
+        type: String,
+        required: true,
+        min: 3
+    },
+    itemID: {
+        type: String,
+        required: true,
+        unique: true,
+        min: 3
+    },
     itemName: {
         type: String,
         required: true,
@@ -21,4 +32,4 @@ const itemSchema = new mongoose.Schema({
     }
 });
 
-module.exports.itemSchema = itemSchema;
+module.exports = mongoose.model('items', itemSchema);
