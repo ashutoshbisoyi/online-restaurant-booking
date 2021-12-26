@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.scss';
-import heroImage from '../../../assets/hero3.svg'; //3
+// import heroImage from '../../../assets/hero3.svg'; //3
 import instagram from '../../../assets/instagram.png';
 import facebook from '../../../assets/facebook.png';
 import twitter from '../../../assets/twitter.png';
