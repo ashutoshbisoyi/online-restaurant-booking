@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { imageSchema } = require("./restro");
 
 const itemSchema = new mongoose.Schema({
     categoryID: {
@@ -17,15 +18,19 @@ const itemSchema = new mongoose.Schema({
         required: true,
         min: 3
     },
-    itemDesc: {
-        type: String,
-        required: true,
-        min: 3
-    },
     itemPrice: {
         type: Number,
         required: true
     },
+    veg: {
+        type: Boolean,
+        required: true
+    },
+    nonveg: {
+        type: Boolean,
+        required: true
+    },
+    images: [imageSchema],
     createdAt: {
         type: Date,
         default: Date.now

@@ -15,8 +15,10 @@ const addItem = async (req, res) => {
         categoryID: params,
         itemID: uniqid('Item-Code-'),
         itemName: req.body.itemName,
-        itemDesc: req.body.itemDesc,
-        itemPrice: req.body.itemPrice
+        itemPrice: req.body.itemPrice,
+        veg: req.body.veg,
+        nonveg: req.body.nonveg,
+        images: req.body.images
     });
     try {
         const savedItem = await item.save();

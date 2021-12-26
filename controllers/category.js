@@ -1,4 +1,5 @@
 const categorySchema = require("../models/category");
+const itemSchema = require("../models/item");
 const uniqid = require('uniqid');
 
 const addCategory = async (req, res) => {

@@ -65,3 +65,4 @@ const restroSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('restaurant', restroSchema);
+module.exports.imageSchema = imageSchema;
