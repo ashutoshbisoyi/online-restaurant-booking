@@ -3,7 +3,7 @@
 .plate-item-table {
   .table-head {
     margin-bottom: 2em;
-    background-color: $primary-red;
+    background-color: $primary-color;
     color: $white;
     padding: 1em;
     h5 {
@@ -24,7 +24,7 @@
     h4 {
       @include align-center;
       .price {
-        background-color: $primary-red;
+        background-color: $primary-color;
         font-weight: 700;
         color: $white;
         padding: 0.2em 0.4em;

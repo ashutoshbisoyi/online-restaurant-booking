@@ -7,7 +7,7 @@
       opacity: 0.5;
     }
     .slick-dots li.slick-active button:before {
-      color: $primary-red;
+      color: $primary-color;
       opacity: 1;
     }
     .img-slide {
@@ -22,6 +22,9 @@
       position: relative;
       h1 {
         margin-bottom: 0.3em;
+      }
+      .location-icon {
+        max-width: 24px;
       }
       .description {
         margin-top: 1.7em;

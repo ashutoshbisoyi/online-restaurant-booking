@@ -25,11 +25,11 @@ button {
   font-weight: 500;
   font-family: 'Poppins', sans-serif !important;
   &.primary {
-    background-color: $primary-red;
+    background-color: $primary-color;
     color: $white;
   }
   &:hover {
-    box-shadow: 0 0 0 3px rgba($color: $primary-red, $alpha: 0.5) !important;
+    box-shadow: 0 0 0 3px rgba($color: $primary-color, $alpha: 0.5) !important;
   }
 }
 section {
@@ -41,7 +41,7 @@ section {
       display: block;
       height: 8px;
       width: 130px;
-      background-color: $primary-red;
+      background-color: $primary-color;
       margin-top: 0.5em;
     }
   }

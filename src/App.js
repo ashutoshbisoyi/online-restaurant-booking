@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //styles
 import './styles/main.scss';
 import 'slick-carousel/slick/slick.css';
@@ -8,6 +8,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './utils/theme';
 //router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//aos
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 //components
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import Home from './pages/Home';
@@ -15,6 +18,12 @@ import Restaurant from './pages/Restaurant';
 import Plate from './pages/Plate';
 import Restaurants from './sections/resturants/Restaurants';
 const App = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      offset: 0,
+    });
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <Router>

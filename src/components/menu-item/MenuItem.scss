@@ -25,7 +25,7 @@
     }
     span {
       font-weight: 500;
-      color: $primary-red;
+      color: $primary-color;
       font-size: 1.4em;
     }
   }
@@ -37,10 +37,10 @@
     li {
       text-transform: capitalize;
       padding: 0.1em 1em;
-      border: 1px solid $primary-red;
-      color: $primary-red;
+      border: 1px solid $primary-color;
+      color: $primary-color;
       border-radius: 25px;
-      background-color: rgba($color: $primary-red, $alpha: 0.1);
+      background-color: rgba($color: $primary-color, $alpha: 0.1);
       margin-right: 0.5em;
       font-size: 0.8em;
       &.veg {

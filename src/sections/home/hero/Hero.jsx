@@ -19,8 +19,8 @@ const Hero = () => {
             </div>
           </div>
           <div className='col-12 col-md-6 d-flex align-items-end'>
-            <img src={heroImage} alt='df' className='img-fluid' />
-            {/* <div className='animation'>
+            {/* <img src={heroImage} alt='df' className='img-fluid' /> */}
+            <div className='animation'>
               <lottie-player
                 src='https://assets3.lottiefiles.com/packages/lf20_qX4zwY.json'
                 background='transparent'
@@ -28,7 +28,7 @@ const Hero = () => {
                 loop
                 autoplay
               ></lottie-player>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

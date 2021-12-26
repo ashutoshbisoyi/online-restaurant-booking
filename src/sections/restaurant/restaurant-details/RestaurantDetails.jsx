@@ -38,7 +38,7 @@ const RestaurantDetails = ({ details }) => {
                 <img
                   src={locationIcon}
                   alt='location'
-                  className='img-fluid me-1'
+                  className='img-fluid me-1 location-icon'
                 />
                 {location}
               </p>

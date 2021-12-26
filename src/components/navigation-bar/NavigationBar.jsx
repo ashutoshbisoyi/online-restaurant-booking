@@ -7,20 +7,24 @@ import plateIcon from '../../assets/food-plate.png';
 import { Badge } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { selectPlateItems } from '../../features/plateSlice';
+import logo from '../../assets/logo.png';
+
 const NavigationBar = () => {
   const itemsInPlate = useSelector(selectPlateItems);
   return (
     <nav className='navbar sticky-top navbar-expand-lg navbar-light bg-white'>
       <div className='container'>
-        <div className='logo'>
-          <h1>
-            Good <span>Food</span>
-          </h1>
-        </div>
+        <h1 className='logo'>
+          <img src={logo} alt='eat-it' className='img-fluid' />
+        </h1>
         <div className='d-lg-none'>
           <NavLink exact to='/plate'>
             <Badge badgeContent={itemsInPlate.length} color='secondary'>
-              <img src={plateIcon} alt='plate' className='img-fluid' />
+              <img
+                src={plateIcon}
+                alt='plate'
+                className='img-fluid plate-icon'
+              />
             </Badge>
           </NavLink>
         </div>
@@ -72,7 +76,11 @@ const NavigationBar = () => {
             <div className='plate-container d-none d-lg-block me-5'>
               <NavLink exact to='/plate'>
                 <Badge badgeContent={itemsInPlate.length} color='secondary'>
-                  <img src={plateIcon} alt='plate' className='img-fluid' />
+                  <img
+                    src={plateIcon}
+                    alt='plate'
+                    className='img-fluid plate-icon'
+                  />
                 </Badge>
               </NavLink>
             </div>

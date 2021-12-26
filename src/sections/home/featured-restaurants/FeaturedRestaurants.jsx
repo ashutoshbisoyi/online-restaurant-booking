@@ -14,7 +14,9 @@ const FeaturedRestaurants = () => {
         <div className='row'>
           {RestaurantsData.slice(0, 4).map((value, index) => (
             <div className='col-12 col-md-6 col-lg-3' key={index}>
-              <RestaurantCard {...value} />
+              <div data-aos='fade-up' data-aos-delay={`${index}00`}>
+                <RestaurantCard {...value} />
+              </div>
             </div>
           ))}
         </div>

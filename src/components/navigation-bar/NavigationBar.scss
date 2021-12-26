@@ -12,21 +12,12 @@
     }
   }
   .logo {
-    height: 85px;
-    width: 85px;
-    padding: 1em;
-    background-color: $primary-red;
-    color: $white;
-    @include justify-center;
-    h1 {
-      font-size: 1.5em;
-      font-weight: 600;
-      span {
-        display: block;
-        font-size: 0.85em;
-        font-weight: 300;
-      }
+    img {
+      max-width: 70px;
     }
+  }
+  .plate-icon {
+    max-width: 35px;
   }
   .nav-item {
     margin: 0 1em;
@@ -38,7 +29,7 @@
       display: block;
       height: 3px;
       width: 100%;
-      background-color: $primary-red;
+      background-color: $primary-color;
     }
   }
 }
@@ -51,11 +42,12 @@
 }
 @media (max-width: $xs) {
   .navbar {
+    .plate-icon {
+      max-width: 35px;
+    }
     .logo {
-      height: 70px;
-      width: 70px;
-      h1 {
-        font-size: 1.2em;
+      img {
+        max-width: 45px;
       }
     }
     .nav-item {
