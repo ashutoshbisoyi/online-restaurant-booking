@@ -1,3 +1,4 @@
+const restroSchema = require("../models/restro");
 const itemSchema = require("../models/item");
 const uniqid = require('uniqid');
 
@@ -91,11 +92,40 @@ const deleteItemByID = async (req, res) => {
     res.status(200).json({ status: true });
 };
 
+// view all docs {restro, categ, items} by restroID
+const viewDetailsByRestroID = async (req, res) => {
+    const params = req.params.restaurantID;
+    restroSchema.aggregate([
+        { "$match": { "restaurantID": params } },
+        {
+            "$lookup": {
+                from: "categories",
+                let: { restaurantID: "$restaurantID" },
+                pipeline: [{ $match: { $expr: { $eq: ["$restaurantID", "$$restaurantID"] } } },
+                {
+                    "$lookup": {
+                        from: "items",
+                        let: { categoryID: "$categoryID" },
+                        pipeline: [{ $match: { $expr: { $eq: ["$categoryID", "$$categoryID"] } } }],
+                        as: "items"
+                    }
+                }],
+                as: "category"
+            }
+        },
+    ]).exec(function (err, result) {
+        if (err) throw err;
+        res.status(200).send(result);
+        // console.log(result);
+    })
+};
+
 module.exports = {
     addItem,
     viewItems,
     viewItemByID,
     viewItemID,
     updateItemByID,
-    deleteItemByID
+    deleteItemByID,
+    viewDetailsByRestroID
 }

@@ -1,5 +1,5 @@
+const restroSchema = require("../models/restro");
 const categorySchema = require("../models/category");
-const itemSchema = require("../models/item");
 const uniqid = require('uniqid');
 
 const addCategory = async (req, res) => {
@@ -87,6 +87,25 @@ const deleteCategoryByID = async (req, res) => {
     await categorySchema.findByIdAndRemove(category._id);
     res.status(200).json({ status: true });
 };
+
+// const allC = async (req, res) => {
+//     const params = req.params.restaurantID;
+//     restroSchema.aggregate([
+//         { "$match": { "restaurantID": params } },
+//         {
+//             "$lookup": {
+//                 from: "categories",
+//                 localField: "restaurantID",
+//                 foreignField: "restaurantID",
+//                 as: "restroCategory"
+//             }
+//         }
+//     ]).exec(function (err, result) {
+//         if (err) throw err;
+//         res.status(200).send(result);
+//         console.log(result);
+//     })
+// };
 
 module.exports = {
     addCategory,
