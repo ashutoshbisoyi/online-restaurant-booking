@@ -40,7 +40,11 @@ const RestaurantCard = ({ name, images, location, startTime, closeTime }) => {
         </span>
         <div>
           <Link to={`/restaurants/${name}`}>
-            <RegularButton variant='contained' color='primary'>
+            <RegularButton
+              variant='contained'
+              color='primary'
+              className='hoverAction'
+            >
               See Menu
             </RegularButton>
           </Link>

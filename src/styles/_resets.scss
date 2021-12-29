@@ -31,6 +31,12 @@ button {
   &:hover {
     box-shadow: 0 0 0 3px rgba($color: $primary-color, $alpha: 0.5) !important;
   }
+  &.hoverAction {
+    transition: all 0.3s linear;
+    &:hover {
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
 }
 section {
   position: relative;
