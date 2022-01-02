@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './FeaturedRestaurants.scss';
 import RestaurantCard from '../../../components/restaurant-card/RestaurantCard';
-import RestaurantsData from '../../../data/RestaurantData';
 import forkIcon from '../../../assets/fork.png';
 import { useEffect } from 'react';
 import axios from 'axios';
