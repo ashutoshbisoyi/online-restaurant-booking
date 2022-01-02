@@ -5,12 +5,23 @@ import { addItemToPlate } from '../../features/plateSlice';
 import './MenuItem.scss';
 import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
+import defaultMenuImage from '../../assets/menu-items/chicken-biriyani.webp';
 
 function SlideTransition(props) {
   return <Slide {...props} direction='up' />;
 }
 
-const MenuItem = ({ name, price, image, foodType, menuType, id }) => {
+const MenuItem = ({
+  itemName,
+  itemPrice,
+  images = defaultMenuImage,
+  veg,
+  nonveg,
+  itemID,
+  categoryID,
+  deleteMenu,
+  editMenu,
+}) => {
   const [modal, setModal] = useState({
     visibility: false,
     itemName: '',
@@ -19,16 +30,16 @@ const MenuItem = ({ name, price, image, foodType, menuType, id }) => {
   const handleAddToPlate = (id) => {
     setModal({
       visibility: true,
-      itemName: name,
+      itemName: itemName,
     });
     dispatch(
       addItemToPlate({
         id: id,
-        name: name,
-        price: price,
-        image: image,
-        foodType: foodType,
-        menuType: menuType,
+        name: itemName,
+        price: itemPrice,
+        images: images,
+        veg: veg,
+        nonveg: nonveg,
         quantity: 1,
       })
     );
@@ -55,22 +66,25 @@ const MenuItem = ({ name, price, image, foodType, menuType, id }) => {
       <div className='menu-item'>
         <div
           className='image'
-          style={{ backgroundImage: `url('${image}')` }}
+          style={{
+            backgroundImage: `url('${
+              images.length > 0 ? images[0].base64 : defaultMenuImage
+            }')`,
+          }}
         ></div>
         <div className='title-price'>
-          <h5>{name}</h5>
-          <span>₹{price}</span>
+          <h5>{itemName}</h5>
+          <span>₹{itemPrice}</span>
         </div>
         <ul>
-          <li className={foodType}>{foodType}</li>
-          <li>{menuType}</li>
+          <li className={veg ? 'veg' : 'nonveg'}>{veg ? 'Veg' : 'Non Veg'}</li>
         </ul>
         <div>
           <SmallButton
             variant='contained'
             size='small'
             fullWidth
-            onClick={() => handleAddToPlate(id)}
+            onClick={() => handleAddToPlate(itemID)}
           >
             Add to plate
           </SmallButton>

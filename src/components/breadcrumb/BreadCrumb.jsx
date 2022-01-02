@@ -3,7 +3,7 @@ import Breadcrumbs from 'react-router-dynamic-breadcrumbs';
 const BreadCrumb = () => {
   const routesList = {
     '/': 'Home',
-    '/restaurants/:restaurantName': ':restaurantName',
+    '/restaurants/:restaurantID': ':restaurantID',
   };
   return (
     <Breadcrumbs

@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+.status {
+  text-align: center;
+  margin-top: 100px;
+  img {
+    max-width: 400px;
+    margin-bottom: 1em;
+  }
+  p {
+    color: $fade;
+    font-size: 1.2em;
+  }
+}

@@ -12,9 +12,9 @@ import {
 
 const PlateItem = ({
   name,
-  image,
+  images,
   price,
-  foodType,
+  veg,
   quantity,
   menuType,
   id,
@@ -39,17 +39,18 @@ const PlateItem = ({
           <div className='col-3 col-md-1 justify-center mb-4 mb-md-0'>
             <div
               className='image'
-              style={{ backgroundImage: `url('${image}')` }}
+              style={{
+                backgroundImage: `url('${
+                  images && images.length > 0 && images[0].base64
+                }')`,
+              }}
             ></div>
           </div>
           <div className='col-9 col-md-4 col-lg-3 d-flex justify-content-md-center align-items-center mb-4 mb-md-0'>
             <h5>{name}</h5>
           </div>
-          <div className='col-lg-1 justify-center d-none d-lg-flex'>
-            <span>{menuType}</span>
-          </div>
-          <div className='col-lg-1 justify-center d-none d-lg-flex'>
-            <span>{foodType}</span>
+          <div className='col-lg-2 justify-center d-none d-lg-flex'>
+            <span>{veg ? 'veg' : 'nonveg'}</span>
           </div>
           <div className='col-lg-1 justify-center d-none d-lg-flex'>
             <span>{price}</span>
