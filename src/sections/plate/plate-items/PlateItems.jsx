@@ -8,7 +8,8 @@ import PlateItemTable from '../../../components/plate-item-table/PlateItemTable'
 
 const PlateItems = () => {
   const itemsInPlate = useSelector(selectPlateItems);
-
+  console.log(itemsInPlate);
+  const restaurantName = itemsInPlate[0] && itemsInPlate[0].restaurantName;
   return (
     <>
       <section className='container-fluid plate-items'>
@@ -16,7 +17,8 @@ const PlateItems = () => {
           {itemsInPlate.length > 0 ? (
             <div>
               <h2 className='title'>
-                You have <span>{itemsInPlate.length}</span> items in your plate
+                You have <span>{itemsInPlate.length}</span> items from{' '}
+                {restaurantName} in your plate
               </h2>
               <div className='table-container'>
                 <PlateItemTable />

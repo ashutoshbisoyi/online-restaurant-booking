@@ -10,9 +10,6 @@ const Restaurant = () => {
   let { restaurantId } = useParams();
 
   useEffect(() => {
-    console.log(
-      `https://eatit-services.herokuapp.com/api/restaurant/category/details/view/${restaurantId}`
-    );
     axios
       .get(
         `https://eatit-services.herokuapp.com/api/restaurant/category/details/view/${restaurantId}`

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SmallButton } from '../button/Button';
-import { addItemToPlate } from '../../features/plateSlice';
+import { addItemToPlate, selectPlateItems } from '../../features/plateSlice';
 import './MenuItem.scss';
 import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
@@ -21,28 +21,46 @@ const MenuItem = ({
   categoryID,
   deleteMenu,
   editMenu,
+  restaurantId,
+  restaurantName,
 }) => {
   const [modal, setModal] = useState({
     visibility: false,
     itemName: '',
   });
   const dispatch = useDispatch();
+  const itemsInPlate = useSelector(selectPlateItems);
+
   const handleAddToPlate = (id) => {
-    setModal({
-      visibility: true,
-      itemName: itemName,
-    });
-    dispatch(
-      addItemToPlate({
-        id: id,
-        name: itemName,
-        price: itemPrice,
-        images: images,
-        veg: veg,
-        nonveg: nonveg,
-        quantity: 1,
-      })
+    const result = itemsInPlate.filter(
+      (value) => value.restaurantId === restaurantId
     );
+    console.log(result);
+    console.log(itemsInPlate === []);
+    if (itemsInPlate.length === 0 || result.length !== 0) {
+      console.log('in if');
+      setModal({
+        visibility: true,
+        itemName: itemName,
+      });
+      dispatch(
+        addItemToPlate({
+          id: id,
+          name: itemName,
+          price: itemPrice,
+          images: images,
+          veg: veg,
+          nonveg: nonveg,
+          quantity: 1,
+          restaurantId: restaurantId,
+          restaurantName: restaurantName,
+        })
+      );
+    } else {
+      alert(
+        'You have an existing item in your plate from another restaurant. To proceed, remove that first'
+      );
+    }
   };
   const handleClose = () => {
     setModal({

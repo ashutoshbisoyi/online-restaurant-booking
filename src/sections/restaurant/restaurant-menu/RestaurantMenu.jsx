@@ -4,7 +4,7 @@ import MenuItem from '../../../components/menu-item/MenuItem';
 import Slider from 'react-slick';
 import plateIcon from '../../../assets/plate.png';
 import Status from '../../../components/status/Status';
-const RestaurantMenu = ({ category, restaurantName }) => {
+const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -53,7 +53,7 @@ const RestaurantMenu = ({ category, restaurantName }) => {
                     <Slider {...settings}>
                       {value.items.map((item, index) => (
                         <div className='px-3 ps-0' key={index}>
-                          <MenuItem {...item} />
+                          <MenuItem restaurantId={restaurantId} {...item} />
                         </div>
                       ))}
                     </Slider>
@@ -64,7 +64,11 @@ const RestaurantMenu = ({ category, restaurantName }) => {
                           className='col-12 col-sm-6 col-md-4 col-lg-3'
                           key={index}
                         >
-                          <MenuItem {...item} />
+                          <MenuItem
+                            restaurantName={restaurantName}
+                            restaurantId={restaurantId}
+                            {...item}
+                          />
                         </div>
                       ))}
                     </div>
