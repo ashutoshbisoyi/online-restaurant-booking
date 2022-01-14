@@ -12,11 +12,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 //components
-import NavigationBar from './components/navigation-bar/NavigationBar';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurant';
 import Plate from './pages/Plate';
 import Restaurants from './sections/resturants/Restaurants';
+import MuiBar from './components/mui-bar/MuiBar';
 const App = () => {
   useEffect(() => {
     Aos.init({
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <NavigationBar />
+        <MuiBar />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/restaurants' component={Restaurants} />

@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.logo {
+  max-width: 60px;
+}
+.plate-icon {
+  max-width: 40px;
+}
+.search-icon {
+  color: #838383;
+}
+
+.css-1kpdewa-MuiAutocomplete-root .MuiFilledInput-root {
+  padding: 0.5em !important;
+}
+.nav-ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    a {
+      color: #838383 !important;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+}
+.nav-active {
+  &::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: $primary-color;
+  }
+}
+@media (max-width: $sm) {
+  .logo {
+    max-width: 40px;
+    margin-right: 1em;
+  }
+  .plate-icon {
+    max-width: 30px;
+  }
+}

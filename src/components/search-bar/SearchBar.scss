@@ -1,0 +1,47 @@
+.search-bar {
+  border: none;
+  .search {
+    position: relative;
+    border-radius: 8px;
+    &:hover {
+      background-color: #d4d4d4;
+    }
+  }
+  input {
+    width: 100%;
+    color: '#111111';
+    padding: 0.5em 0.5em 0.5em 40px;
+    ::placeholder {
+      color: '#111111';
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  .result-container {
+    width: 280px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: absolute;
+    list-style: none;
+    background-color: #ffffff;
+    overflow: auto;
+    max-height: 200px;
+    color: black;
+    border-radius: 0 0 11px 11px;
+    li[data-focus='true'],
+    li:active {
+      background-color: gray;
+      cursor: pointer;
+    }
+    li {
+      padding: 0.5em 1em;
+      &:hover {
+        background-color: #ececec;
+        cursor: pointer;
+      }
+    }
+  }
+}
