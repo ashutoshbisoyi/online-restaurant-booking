@@ -109,13 +109,15 @@ export default function MuiBar() {
               </li>
             </ul>
             <div className='mx-5'>
-              <Badge badgeContent={itemsInPlate.length} color='secondary'>
-                <img
-                  src={plateIcon}
-                  alt='plate'
-                  className='img-fluid plate-icon'
-                />
-              </Badge>
+              <Link to='/plate'>
+                <Badge badgeContent={itemsInPlate.length} color='secondary'>
+                  <img
+                    src={plateIcon}
+                    alt='plate'
+                    className='img-fluid plate-icon'
+                  />
+                </Badge>
+              </Link>
             </div>
             <RegularButton variant='contained' color='primary'>
               Contact Us
@@ -125,13 +127,15 @@ export default function MuiBar() {
             sx={{ display: { xs: 'flex', md: 'none', alignItems: 'center' } }}
           >
             <div className='mx-2'>
-              <Badge badgeContent={itemsInPlate.length} color='secondary'>
-                <img
-                  src={plateIcon}
-                  alt='plate'
-                  className='img-fluid plate-icon'
-                />
-              </Badge>
+              <Link to='/plate'>
+                <Badge badgeContent={itemsInPlate.length} color='secondary'>
+                  <img
+                    src={plateIcon}
+                    alt='plate'
+                    className='img-fluid plate-icon'
+                  />
+                </Badge>
+              </Link>
             </div>
             <IconButton
               size='small'
