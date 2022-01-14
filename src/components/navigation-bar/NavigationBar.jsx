@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavigationBar.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RegularButton } from '../button/Button';
 import hamburgerIcon from '../../assets/hamburger.png';
 import plateIcon from '../../assets/food-plate.png';
@@ -14,9 +14,11 @@ const NavigationBar = () => {
   return (
     <nav className='navbar sticky-top navbar-expand-lg navbar-light bg-white'>
       <div className='container'>
-        <h1 className='logo'>
-          <img src={logo} alt='eat-it' className='img-fluid' />
-        </h1>
+        <Link to='/'>
+          <h1 className='logo'>
+            <img src={logo} alt='eat-it' className='img-fluid' />
+          </h1>
+        </Link>
         <div className='d-lg-none'>
           <NavLink exact to='/plate'>
             <Badge badgeContent={itemsInPlate.length} color='secondary'>

@@ -30,7 +30,7 @@ const FeaturedRestaurants = () => {
           Featured Restaurants
           <img src={forkIcon} alt='fork' className='img-fluid ms-3' />
         </h2>
-        <div className='row'>
+        <div className='row g-3'>
           {restaurants && !loading ? (
             restaurants.length > 0 ? (
               restaurants.slice(0, 4).map((value, index) => (

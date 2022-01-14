@@ -1,7 +1,9 @@
 @import '../../styles/variables';
 .restaurant-card {
-  margin-bottom: 2em;
   height: 100%;
+  padding: 1em;
+  border-radius: 11px;
+  transition: all 0.4s ease;
   .top {
     position: relative;
     .img-slide {
@@ -23,6 +25,9 @@
       color: #8a8a8a;
       font-weight: normal;
     }
+    .available {
+      color: #08d678;
+    }
     button {
       margin-top: 2em;
     }
@@ -39,5 +44,8 @@
   }
   .slick-dots li.slick-active button:before {
     color: $primary-color;
+  }
+  &:hover {
+    box-shadow: 5px 5px 28px #e6e6e6, -5px -5px 28px #ffffff;
   }
 }

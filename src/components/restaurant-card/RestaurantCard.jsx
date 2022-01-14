@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { Chip } from '@mui/material';
 import RiceBowlIcon from '@mui/icons-material/RiceBowl';
 import TapasIcon from '@mui/icons-material/Tapas';
+import available from '../../assets/right-mark.png';
+
 const RestaurantCard = ({
   restaurantName,
   restaurantID,
@@ -46,28 +48,32 @@ const RestaurantCard = ({
           <img src={locationIcon} alt='location' className='img-fluid me-1' />
           {location}
         </p>
-        <div className='d-flex justify-content-between align-items-center'>
-          <div>
-            {veg && (
-              <Chip
-                size='small'
-                label='Veg'
-                style={{ backgroundColor: '#A6CF98', color: '#ffffff' }}
-                className='me-1'
-                icon={<RiceBowlIcon style={{ color: '#557C55' }} />}
-              />
-            )}
-            {nonveg && (
-              <Chip
-                size='small'
-                style={{ backgroundColor: '#FFB5B5', color: '#ffffff' }}
-                label='Non Veg'
-                icon={<TapasIcon style={{ color: '#FF7272' }} />}
-              />
-            )}
-          </div>
-          <span className='timing'>
-            <img src={timingIcon} alt='location' className='img-fluid me-1' />
+        <div>
+          {veg && (
+            <Chip
+              size='small'
+              label='Veg'
+              style={{ backgroundColor: '#A6CF98', color: '#ffffff' }}
+              className='me-1'
+              icon={<RiceBowlIcon style={{ color: '#557C55' }} />}
+            />
+          )}
+          {nonveg && (
+            <Chip
+              size='small'
+              style={{ backgroundColor: '#FFB5B5', color: '#ffffff' }}
+              label='Non Veg'
+              icon={<TapasIcon style={{ color: '#FF7272' }} />}
+            />
+          )}
+        </div>
+        <div className='mt-3 d-flex justify-content-between align-items-center text-secondary'>
+          <span className='available'>
+            <img src={available} alt='available' className='img-fluid me-1' />{' '}
+            Available
+          </span>
+          <span>
+            <img src={timingIcon} alt='location' className='img-fluid me-2' />
             {`${openTime} - ${closeTime}`}
           </span>
         </div>

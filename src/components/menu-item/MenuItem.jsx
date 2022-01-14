@@ -98,14 +98,20 @@ const MenuItem = ({
           <li className={veg ? 'veg' : 'nonveg'}>{veg ? 'Veg' : 'Non Veg'}</li>
         </ul>
         <div>
-          <SmallButton
-            variant='contained'
-            size='small'
-            fullWidth
-            onClick={() => handleAddToPlate(itemID)}
-          >
-            Add to plate
-          </SmallButton>
+          {itemsInPlate.filter((value) => value.id === itemID).length === 0 ? (
+            <SmallButton
+              variant='contained'
+              size='small'
+              fullWidth
+              onClick={() => handleAddToPlate(itemID)}
+            >
+              Add to plate
+            </SmallButton>
+          ) : (
+            <SmallButton variant='contained' size='small' disabled fullWidth>
+              In Plate
+            </SmallButton>
+          )}
         </div>
       </div>
     </>
