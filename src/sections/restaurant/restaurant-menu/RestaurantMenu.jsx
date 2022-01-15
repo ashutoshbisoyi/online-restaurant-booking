@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RestaurantMenu.scss';
 import MenuItem from '../../../components/menu-item/MenuItem';
 import Slider from 'react-slick';
 import plateIcon from '../../../assets/plate.png';
 import Status from '../../../components/status/Status';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
+  const [menuType, setMenuType] = useState('all');
   const settings = {
     dots: true,
     infinite: false,
@@ -36,6 +38,9 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
       },
     ],
   };
+  const handleChange = (event, newAlignment) => {
+    setMenuType(newAlignment);
+  };
   return (
     <section className='restaurant-menu'>
       <div className='container'>
@@ -43,6 +48,17 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
           Menu at {restaurantName}{' '}
           <img src={plateIcon} alt='menu items' className='img-fluid ms-2' />
         </h2>
+        <div className='justify-center'>
+          <ToggleButtonGroup
+            color='primary'
+            value={menuType}
+            exclusive
+            onChange={handleChange}
+          >
+            <ToggleButton value='veg'>Only Veg</ToggleButton>
+            <ToggleButton value='all'>All Items</ToggleButton>
+          </ToggleButtonGroup>
+        </div>
         <div className='card-container'>
           {category && category.length > 0 ? (
             <div>
@@ -59,18 +75,31 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
                     </Slider>
                   ) : (
                     <div className='row gy-5 gy-md-0'>
-                      {value.items.map((item, index) => (
-                        <div
-                          className='col-12 col-sm-6 col-md-4 col-lg-3'
-                          key={index}
-                        >
-                          <MenuItem
-                            restaurantName={restaurantName}
-                            restaurantId={restaurantId}
-                            {...item}
-                          />
-                        </div>
-                      ))}
+                      {value.items.filter((item) =>
+                        menuType === 'veg' ? item.veg === true : item.itemID
+                      ).length > 0 ? (
+                        value.items
+                          .filter((item) =>
+                            menuType === 'veg' ? item.veg === true : item.itemID
+                          )
+                          .map((item, index) => {
+                            console.log(item);
+                            return (
+                              <div
+                                className='col-12 col-sm-6 col-md-4 col-lg-3'
+                                key={index}
+                              >
+                                <MenuItem
+                                  restaurantName={restaurantName}
+                                  restaurantId={restaurantId}
+                                  {...item}
+                                />
+                              </div>
+                            );
+                          })
+                      ) : (
+                        <Status message='No menu found' />
+                      )}
                     </div>
                   )}
                 </div>
