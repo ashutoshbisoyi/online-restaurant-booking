@@ -55,7 +55,10 @@ export default function MuiBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{ flexGrow: 1 }}
+      style={{ position: 'sticky', top: 0, zIndex: 99 }}
+    >
       <AppBar
         position='sticky'
         sx={{

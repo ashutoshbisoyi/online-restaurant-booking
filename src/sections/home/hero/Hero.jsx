@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Hero.scss';
+import Alert from '@mui/material/Alert';
 // import heroImage from '../../../assets/hero3.svg'; //3
 import instagram from '../../../assets/instagram.png';
 import facebook from '../../../assets/facebook.png';
 import twitter from '../../../assets/twitter.png';
 const Hero = () => {
+  const [showLocaitonMessage, setShowLocaitonMessage] = useState(false);
+  useEffect(() => {
+    const status = localStorage.getItem('showLocationMessage');
+    console.log(status);
+    if (status === 'true') {
+      console.log('inside if');
+      setShowLocaitonMessage(true);
+    } else {
+      console.log('inside else');
+      setShowLocaitonMessage(false);
+    }
+  }, []);
+  const closeLocationMessage = () => {
+    localStorage.setItem('showLocationMessage', false);
+    setShowLocaitonMessage(false);
+  };
   return (
     <section className='hero container-fluid'>
+      {showLocaitonMessage && (
+        <div className='pt-2'>
+          <Alert severity='warning' onClose={closeLocationMessage}>
+            For now eat-it is only operating at Bhubaneswar and nearby areas. We
+            are coming to your area soon.
+          </Alert>
+        </div>
+      )}
       <div className='container'>
         <div className='row w-100 h-100'>
           <div className='col-12 col-md-6'>
