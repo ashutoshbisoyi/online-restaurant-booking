@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const categorySchema = require('./category');
 
 const imageSchema = new mongoose.Schema({
     base64: {
