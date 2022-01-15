@@ -48,7 +48,7 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
           Menu at {restaurantName}{' '}
           <img src={plateIcon} alt='menu items' className='img-fluid ms-2' />
         </h2>
-        <div className='justify-center'>
+        <div className='justify-center mb-5'>
           <ToggleButtonGroup
             color='primary'
             value={menuType}
