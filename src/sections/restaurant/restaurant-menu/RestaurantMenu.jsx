@@ -67,11 +67,21 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
                   <h4 className='mb-4'>{value.categoryName}</h4>
                   {value.items.length > 4 ? (
                     <Slider {...settings}>
-                      {value.items.map((item, index) => (
-                        <div className='px-3 ps-0' key={index}>
-                          <MenuItem restaurantId={restaurantId} {...item} />
-                        </div>
-                      ))}
+                      {value.items.filter((item) =>
+                        menuType === 'veg' ? item.veg === true : item.itemID
+                      ).length > 0 ? (
+                        value.items
+                          .filter((item) =>
+                            menuType === 'veg' ? item.veg === true : item.itemID
+                          )
+                          .map((item, index) => (
+                            <div className='px-3 ps-0' key={index}>
+                              <MenuItem restaurantId={restaurantId} {...item} />
+                            </div>
+                          ))
+                      ) : (
+                        <Status message='No menu found' />
+                      )}
                     </Slider>
                   ) : (
                     <div className='row gy-5 gy-md-0'>
