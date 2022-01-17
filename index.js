@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+const adminLoginRoute = require("./routes/adminLogin");
 const restroRoute = require("./routes/restro");
 const categoryRoute = require("./routes/category");
 const itemRoute = require("./routes/item");
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
+app.use("/api/admin", adminLoginRoute);
 app.use("/api/restaurant/category", itemRoute);
 
 
