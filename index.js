@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     console.log(`MongoDB connection established`);
 });
 
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
 app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
