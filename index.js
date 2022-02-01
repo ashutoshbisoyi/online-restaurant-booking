@@ -7,6 +7,7 @@ const adminLoginRoute = require("./routes/adminLogin");
 const restroRoute = require("./routes/restro");
 const categoryRoute = require("./routes/category");
 const itemRoute = require("./routes/item");
+const paymentRoute = require("./routes/payment-gateway");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,7 +26,7 @@ app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
 app.use("/api/admin", adminLoginRoute);
 app.use("/api/restaurant/category", itemRoute);
-
+app.use("/api/eatit/payment", paymentRoute);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port: ${PORT}`);
