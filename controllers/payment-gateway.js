@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const BASE_URL = process.env.URL;
+// const BASE_URL = process.env.TEST_URL; // testing
+const BASE_URL = process.env.URL; // production
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
@@ -46,20 +47,24 @@ const paymentInit = async (req, res) => {
 };
 
 const paymentSuccess = async (req, res) => {
-    Insta.getPaymentDetails(
-        req.query.payment_request_id,
-        req.query.payment_id,
-        function (error, response) {
-            if (error) {
-                return res.status(404).json({ status: false });
-            } else {
-                return res.status(200)
-                    .json(response);
-                // var temp = JSON.stringify(response);
-                // var responseData = JSON.parse(temp);
-                // console.log(responseData.payment_request);
-            }
-        });
+    // Insta.getPaymentDetails(
+    //     req.query.payment_request_id,
+    //     req.query.payment_id,
+    //     function (error, response) {
+    //         if (error) {
+    //             return res.status(404).json({ status: false });
+    //         } else {
+    //             return res.status(200)
+    //                 .json(response);
+    //             // var temp = JSON.stringify(response);
+    //             // var responseData = JSON.parse(temp);
+    //             // console.log(responseData.payment_request);
+    //         }
+    //     });
+    if (req.query.payment_status === 'Credit')
+        res.redirect("https://eatit-services.netlify.app/payment-success");
+    else
+    res.redirect("https://eatit-services.netlify.app/payment-failed");
 };
 
 module.exports = {
