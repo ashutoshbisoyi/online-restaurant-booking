@@ -5,6 +5,8 @@ import { selectPlateItems } from '../../features/plateSlice';
 import PlateItem from '../plate-item/PlateItem';
 import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
+import { RegularButton } from '../button/Button';
+import axios from 'axios';
 
 function SlideTransition(props) {
   return <Slide {...props} direction='up' />;
@@ -38,6 +40,32 @@ const PlateItemTable = () => {
       ...modal,
       visibility: false,
     });
+  };
+
+  const initiatePayment = () => {
+    const data = {
+      name: 'Amarjeet Sahoo',
+      email: 'amar@mailinator.com',
+      amount: '33',
+      mobile: '8114957980',
+    };
+
+    console.log(
+      'inside function calling https://eatit-services.herokuapp.com/api/eatit/payment/initiate with data',
+      data
+    );
+
+    axios
+      .post(
+        'https://eatit-services.herokuapp.com/api/eatit/payment/initiate',
+        data
+      )
+      .then((res) => {
+        console.log(res);
+        console.log('in then block');
+        window.location.href = res.data;
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -84,6 +112,9 @@ const PlateItemTable = () => {
             <h4>
               Sub Total <div className='price'>₹{subTotal}</div>
             </h4>
+            <RegularButton variant='contained' onClick={initiatePayment}>
+              Proceed
+            </RegularButton>
           </div>
         </div>
       </div>
