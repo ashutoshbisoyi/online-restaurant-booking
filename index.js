@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const http = require('http');
 
 const adminLoginRoute = require("./routes/adminLogin");
 const restroRoute = require("./routes/restro");
@@ -20,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     console.log(`MongoDB connection established`);
 });
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
