@@ -18,6 +18,7 @@ import Plate from './pages/Plate';
 import Restaurants from './sections/resturants/Restaurants';
 import MuiBar from './components/mui-bar/MuiBar';
 import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentFailed from './pages/PaymentFailed';
 const App = () => {
   useEffect(() => {
     Aos.init({
@@ -39,6 +40,7 @@ const App = () => {
           />
           <Route exact path='/plate' component={Plate} />
           <Route exact path='/payment-success' component={PaymentSuccess} />
+          <Route exact path='/payment-failed' component={PaymentFailed} />
         </Switch>
       </Router>
     </ThemeProvider>
