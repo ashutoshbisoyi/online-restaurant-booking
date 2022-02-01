@@ -68,6 +68,9 @@ const PlateItemTable = () => {
       .catch((err) => console.log(err));
   };
 
+  const gst = (subTotal * 5) / 100;
+  const platformFee = 29;
+
   return (
     <>
       <Snackbar
@@ -109,9 +112,19 @@ const PlateItemTable = () => {
         </div>
         <div className='sub-total'>
           <div>
+            <p>
+              Plate Price <span className='price'>₹ {subTotal}</span>
+            </p>
+            <p>
+              GST <span className='price'>₹ {gst}</span>
+            </p>
+            <p>
+              Platform Fees <span className='price'>₹ {platformFee}</span>
+            </p>
             <h4>
-              Sub Total <div className='price'>₹{subTotal}</div>
+              Sub Total <span className='price'>₹ {subTotal}</span>
             </h4>
+            <hr className='my-4' />
             <RegularButton variant='contained' onClick={initiatePayment}>
               Proceed
             </RegularButton>
