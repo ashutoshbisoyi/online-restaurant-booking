@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -13,14 +14,17 @@ import React, { useState } from 'react';
 import { SmallButton } from '../button/Button';
 
 const Checkout = ({ open, handleClose, subTotal }) => {
+  const [loading, setLoading] = useState(false);
+
   const [details, setDetails] = useState({
     name: '',
     email: '',
-    number: '',
-    orderValue: subTotal,
+    mobile: '',
+    amount: subTotal.toString(),
   });
 
   const initiatePayment = () => {
+    setLoading(true);
     console.log(
       'inside function calling https://eatit-services.herokuapp.com/api/eatit/payment/initiate with data',
       details
@@ -32,11 +36,15 @@ const Checkout = ({ open, handleClose, subTotal }) => {
         details
       )
       .then((res) => {
+        setLoading(false);
         console.log(res);
         console.log('in then block');
         window.location.href = res.data;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   const handleChange = (name, e) => {
@@ -82,8 +90,8 @@ const Checkout = ({ open, handleClose, subTotal }) => {
               type='number'
               fullWidth
               variant='standard'
-              value={details.number}
-              onChange={(e) => handleChange('number', e)}
+              value={details.mobile}
+              onChange={(e) => handleChange('mobile', e)}
             />
           </Grid>
           <Grid item md={6} xs={12}>
@@ -91,7 +99,8 @@ const Checkout = ({ open, handleClose, subTotal }) => {
             <TextField
               id='outlined-read-only-input'
               label='Order Value'
-              defaultValue={details.orderValue}
+              defaultValue={details.amount}
+              type='text'
               InputProps={{
                 readOnly: true,
               }}
@@ -104,7 +113,11 @@ const Checkout = ({ open, handleClose, subTotal }) => {
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <SmallButton variant='contained' onClick={initiatePayment}>
-          Proceed for Payment
+          {loading ? (
+            <CircularProgress color='inherit' size={20} />
+          ) : (
+            'Proceed for Payment'
+          )}
         </SmallButton>
       </DialogActions>
     </Dialog>
