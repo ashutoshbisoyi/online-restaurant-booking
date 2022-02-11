@@ -7,6 +7,7 @@ import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
 import { RegularButton } from '../button/Button';
 import axios from 'axios';
+import Checkout from '../modal/Checkout';
 
 function SlideTransition(props) {
   return <Slide {...props} direction='up' />;
@@ -14,6 +15,7 @@ function SlideTransition(props) {
 
 const PlateItemTable = () => {
   const [subTotal, setSubTotal] = useState(0);
+  const [checkout, setCheckout] = useState(false);
   const [modal, setModal] = useState({
     visibility: false,
     itemName: '',
@@ -42,34 +44,10 @@ const PlateItemTable = () => {
     });
   };
 
-  const initiatePayment = () => {
-    const data = {
-      name: 'Amarjeet Sahoo',
-      email: 'amar@mailinator.com',
-      amount: '33',
-      mobile: '8114957980',
-    };
-
-    console.log(
-      'inside function calling https://eatit-services.herokuapp.com/api/eatit/payment/initiate with data',
-      data
-    );
-
-    axios
-      .post(
-        'https://eatit-services.herokuapp.com/api/eatit/payment/initiate',
-        data
-      )
-      .then((res) => {
-        console.log(res);
-        console.log('in then block');
-        window.location.href = res.data;
-      })
-      .catch((err) => console.log(err));
-  };
-
   const gst = (subTotal * 5) / 100;
   const platformFee = 29;
+
+  const handleCloseCheckout = () => setCheckout(false);
 
   return (
     <>
@@ -84,6 +62,13 @@ const PlateItemTable = () => {
           {modal.itemName} removed from your plate
         </Alert>
       </Snackbar>
+      {checkout && (
+        <Checkout
+          open={checkout}
+          handleClose={handleCloseCheckout}
+          subTotal={subTotal}
+        />
+      )}
       <div className='plate-item-table'>
         <div className='row table-head d-none d-lg-flex'>
           <div className='col-1 justify-center'></div>
@@ -125,7 +110,10 @@ const PlateItemTable = () => {
               Sub Total <span className='price'>₹ {subTotal}</span>
             </h4>
             <hr className='my-4' />
-            <RegularButton variant='contained' onClick={initiatePayment}>
+            <RegularButton
+              variant='contained'
+              onClick={() => setCheckout(true)}
+            >
               Proceed
             </RegularButton>
           </div>
