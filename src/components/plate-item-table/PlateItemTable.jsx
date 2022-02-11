@@ -6,7 +6,6 @@ import PlateItem from '../plate-item/PlateItem';
 import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
 import { RegularButton } from '../button/Button';
-import axios from 'axios';
 import Checkout from '../modal/Checkout';
 
 function SlideTransition(props) {
