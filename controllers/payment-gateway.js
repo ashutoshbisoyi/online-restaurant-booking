@@ -1,4 +1,7 @@
 const Insta = require("instamojo-nodejs");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // const BASE_URL = process.env.TEST_URL; // testing
 const BASE_URL = process.env.URL; // production
@@ -34,7 +37,7 @@ const paymentInit = async (req, res) => {
             return res.status(404).json({ status: false });
         } else {
             var responseData = JSON.parse(response);
-            console.log(responseData);
+            // console.log(responseData);
             // res.send("Please check your email to make payment")
             // res.redirect(responseData.payment_request.longurl);
             res.status(200).json(responseData.payment_request.longurl)
@@ -61,7 +64,7 @@ const paymentSuccess = async (req, res) => {
     if (req.query.payment_status === 'Credit')
         res.redirect("https://eatit-services.netlify.app/payment-success");
     else
-        res.redirect("https://eatit-services.netlify.app/payment-failed");
+    res.redirect("https://eatit-services.netlify.app/payment-failed");
 };
 
 module.exports = {
