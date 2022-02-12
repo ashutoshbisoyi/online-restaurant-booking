@@ -1,7 +1,4 @@
 const Insta = require("instamojo-nodejs");
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 // const BASE_URL = process.env.TEST_URL; // testing
 const BASE_URL = process.env.URL; // production
@@ -23,14 +20,14 @@ const paymentInit = async (req, res) => {
 
     data.setRedirectUrl(REDIRECT_URL);
     data.send_email = true;
-    data.send_sms = true;
+    data.send_sms = false;
     data.purpose = "Eat-It Test"; // REQUIRED
     data.currency = 'INR';
     data.allow_repeated_payments = false;
     data.amount = amount;
     data.buyer_name = name;
     data.email = email; // REQUIRED
-    data.phone = mobile;
+    data.phone = mobile; // REQUIRED
 
     Insta.createPayment(data, function (error, response) {
         if (error) {
