@@ -23,7 +23,7 @@ const paymentInit = async (req, res) => {
 
     data.setRedirectUrl(REDIRECT_URL);
     data.send_email = true;
-    data.send_sms = false;
+    data.send_sms = true;
     data.purpose = "Eat-It Test"; // REQUIRED
     data.currency = 'INR';
     data.allow_repeated_payments = false;
@@ -38,8 +38,8 @@ const paymentInit = async (req, res) => {
         } else {
             var responseData = JSON.parse(response);
             console.log(responseData);
+            if (responseData.success === false) return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
-            // res.redirect(responseData.payment_request.longurl);
             res.status(200).json(responseData.payment_request.longurl)
 
         }
@@ -64,7 +64,7 @@ const paymentSuccess = async (req, res) => {
     if (req.query.payment_status === 'Credit')
         res.redirect("https://eatit-services.netlify.app/payment-success");
     else
-    res.redirect("https://eatit-services.netlify.app/payment-failed");
+        res.redirect("https://eatit-services.netlify.app/payment-failed");
 };
 
 module.exports = {
