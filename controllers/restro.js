@@ -1,5 +1,4 @@
 const restroSchema = require('../models/restro');
-const mongoose = require('mongoose');
 const uniqid = require('uniqid');
 
 const addRestro = async (req, res) => {

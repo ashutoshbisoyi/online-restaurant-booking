@@ -8,6 +8,7 @@ const adminLoginRoute = require("./routes/adminLogin");
 const restroRoute = require("./routes/restro");
 const categoryRoute = require("./routes/category");
 const itemRoute = require("./routes/item");
+const orderRoute = require("./routes/order");
 const paymentRoute = require("./routes/payment-gateway");
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api", restroRoute);
 app.use("/api/restaurant", categoryRoute);
 app.use("/api/admin", adminLoginRoute);
 app.use("/api/restaurant/category", itemRoute);
+app.use("/api/restaurant/cart", orderRoute);
 app.use("/api/eatit/payment", paymentRoute);
 
 app.listen(PORT, () => {
