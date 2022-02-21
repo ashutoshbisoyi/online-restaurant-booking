@@ -37,7 +37,7 @@ const paymentInit = async (req, res) => {
             return res.status(404).json({ status: false });
         } else {
             var responseData = JSON.parse(response);
-            console.log(responseData);
+            console.log(responseData.payment_request);
             if (responseData.success === false) return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
             res.status(200).json(responseData.payment_request.longurl)
