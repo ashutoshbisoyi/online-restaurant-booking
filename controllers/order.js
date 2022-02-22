@@ -52,21 +52,21 @@ const viewOrder = async (req, res) => {
         res.status(200).json(orderUpdate);
 };
 
-// const deleteOrderID = async (req, res) => {
-//     const orderID = req.params.orderID;
+const deleteOrderID = async (req, res) => {
+    const orderID = req.params.orderID;
 
-//     const orderUpdate = await orderSchema.findOne({ "orderID": orderID });
-//     if (!orderUpdate)
-//         return res.status(404).json({ status: false });
-    
-//     await orderUpdate.findByIdAndRemove(orderUpdate._id);
-//     res.status(200).json({ status: true });
-// };
+    const orderUpdate = await orderSchema.findOne({ "orderID": orderID });
+    if (!orderUpdate)
+        return res.status(404).json({ status: false });
+
+    await orderSchema.findByIdAndRemove(orderUpdate._id);
+    res.status(200).json({ status: true });
+};
 
 module.exports = {
     addOrder,
     updateOrder,
     viewOrderID,
     viewOrder,
-    // deleteOrderID
+    deleteOrderID
 }
