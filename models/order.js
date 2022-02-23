@@ -61,7 +61,7 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    paymentDetails: { Array },
+    paymentDetails: [Array],
     createdAt: {
         type: Date,
         default: Date.now

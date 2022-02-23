@@ -1,3 +1,4 @@
+const orderSchema = require("../models/order");
 const Insta = require("instamojo-nodejs");
 const dotenv = require('dotenv');
 
@@ -18,6 +19,7 @@ const paymentInit = async (req, res) => {
     var email = req.body.email;
     var amount = req.body.amount;
     var mobile = req.body.mobile;
+    var orderID = req.body.orderID;
 
     var data = new Insta.PaymentData();
 
@@ -32,14 +34,32 @@ const paymentInit = async (req, res) => {
     data.email = email; // REQUIRED
     data.phone = mobile; // REQUIRED
 
+    async function updatePayment(responseData) {
+        const orderUpdate = await orderSchema.findOne({ "orderID": orderID });
+        if (!orderUpdate)
+            return res.status(404).json({ status: false });
+        orderSchema.findByIdAndUpdate(orderUpdate._id, {
+            paymentDetails: [responseData.payment_request]
+        },
+            function (err, docs) {
+                if (err) {
+                    return res.status(404).json({ status: false });
+                }
+                else {
+                    console.log("Updated Data : ", docs);
+                }
+            });
+    }
+
     Insta.createPayment(data, function (error, response) {
         if (error) {
             return res.status(404).json({ status: false });
         } else {
             var responseData = JSON.parse(response);
-            console.log(responseData.payment_request);
+            // console.log(responseData.payment_request);
             if (responseData.success === false) return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
+            updatePayment(responseData);
             res.status(200).json(responseData.payment_request.longurl)
 
         }
