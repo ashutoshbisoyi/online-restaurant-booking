@@ -46,7 +46,7 @@ const paymentInit = async (req, res) => {
                 else console.log("Updated Data : ", docs);
             });
     }
-
+    console.log("Header---:",res.headersSent);
     Insta.createPayment(data, function (error, response) {
         if (error) {
             return res.status(404).json({ status: false });
@@ -56,6 +56,7 @@ const paymentInit = async (req, res) => {
             if (responseData.success === false) return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
             updatePayment(responseData);
+            console.log("Header---:",res.headersSent);
             return res.status(200).json(responseData.payment_request.longurl)
 
         }
