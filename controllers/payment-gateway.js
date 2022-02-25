@@ -4,8 +4,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// const BASE_URL = process.env.TEST_URL; // testing
-const BASE_URL = process.env.URL; // production
+const BASE_URL = process.env.TEST_URL; // testing
+// const BASE_URL = process.env.URL; // production
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
@@ -82,9 +82,11 @@ const paymentSuccess = async (req, res) => {
     //         }
     //     });
     if (req.query.payment_status === 'Credit')
-        res.redirect("https://eatit-services.netlify.app/payment-success");
+        res.status(200)
+            .redirect("https://eatit-services.netlify.app/payment-success");
     else
-        res.redirect("https://eatit-services.netlify.app/payment-failed");
+        res.status(200)
+            .redirect("https://eatit-services.netlify.app/payment-failed");
 };
 
 module.exports = {
