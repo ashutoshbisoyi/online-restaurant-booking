@@ -82,11 +82,9 @@ const paymentSuccess = async (req, res) => {
     //         }
     //     });
     if (req.query.payment_status === 'Credit')
-        res.status(200)
-            .redirect("https://eatit-services.netlify.app/payment-success");
+        return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
     else
-        res.status(200)
-            .redirect("https://eatit-services.netlify.app/payment-failed");
+        return res.status(200).redirect("https://eatit-services.netlify.app/payment-failed");
 };
 
 module.exports = {
