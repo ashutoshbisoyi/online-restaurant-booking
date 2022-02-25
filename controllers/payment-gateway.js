@@ -42,12 +42,8 @@ const paymentInit = async (req, res) => {
             paymentDetails: [responseData.payment_request]
         },
             function (err, docs) {
-                if (err) {
-                    return res.status(404).json({ status: false });
-                }
-                else {
-                    console.log("Updated Data : ", docs);
-                }
+                if (err) return res.status(404).json({ status: false });
+                else console.log("Updated Data : ", docs);
             });
     }
 
@@ -60,7 +56,7 @@ const paymentInit = async (req, res) => {
             if (responseData.success === false) return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
             updatePayment(responseData);
-            res.status(200).json(responseData.payment_request.longurl)
+            return res.status(200).json(responseData.payment_request.longurl)
 
         }
     });
