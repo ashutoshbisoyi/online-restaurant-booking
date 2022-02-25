@@ -4,8 +4,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const BASE_URL = process.env.TEST_URL; // testing
-// const BASE_URL = process.env.URL; // production
+// const BASE_URL = process.env.TEST_URL; // testing
+const BASE_URL = process.env.URL; // production
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
