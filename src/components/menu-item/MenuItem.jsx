@@ -38,16 +38,16 @@ const MenuItem = ({
     console.log(result);
     console.log(itemsInPlate === []);
     if (itemsInPlate.length === 0 || result.length !== 0) {
-      console.log('in if');
+      console.log(restaurantName);
       setModal({
         visibility: true,
         itemName: itemName,
       });
       dispatch(
         addItemToPlate({
-          id: id,
-          name: itemName,
-          price: itemPrice,
+          itemID: id,
+          itemName: itemName,
+          itemPrice: itemPrice,
           images: images,
           veg: veg,
           nonveg: nonveg,
@@ -98,7 +98,8 @@ const MenuItem = ({
           <li className={veg ? 'veg' : 'nonveg'}>{veg ? 'Veg' : 'Non Veg'}</li>
         </ul>
         <div>
-          {itemsInPlate.filter((value) => value.id === itemID).length === 0 ? (
+          {itemsInPlate.filter((value) => value.itemID === itemID).length ===
+          0 ? (
             <SmallButton
               variant='contained'
               size='small'

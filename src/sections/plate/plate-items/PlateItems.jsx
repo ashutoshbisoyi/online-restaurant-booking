@@ -8,7 +8,7 @@ import PlateItemTable from '../../../components/plate-item-table/PlateItemTable'
 
 const PlateItems = () => {
   const itemsInPlate = useSelector(selectPlateItems);
-  console.log(itemsInPlate);
+  // console.log(itemsInPlate);
   const restaurantName = itemsInPlate[0] && itemsInPlate[0].restaurantName;
   return (
     <>

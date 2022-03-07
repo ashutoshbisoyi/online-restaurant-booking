@@ -33,7 +33,7 @@ export const plateSlice = createSlice({
     removeItemFromPlate: (state, action) => {
       const currentItems = current(state).items;
       const updatedItems = currentItems.filter(
-        (item) => item.id !== action.payload
+        (item) => item.itemID !== action.payload
       );
       localStorage.setItem('itemsInPlate', JSON.stringify(updatedItems));
       return { ...state, items: updatedItems };
@@ -41,7 +41,7 @@ export const plateSlice = createSlice({
     increaseQuantity: (state, action) => {
       const currentItems = current(state).items;
       const updatedItems = currentItems.map((item) => {
-        if (item.id === action.payload) {
+        if (item.itemID === action.payload) {
           return { ...item, quantity: item.quantity + 1 };
         }
         return item;
@@ -52,7 +52,7 @@ export const plateSlice = createSlice({
     decreaseQuantity: (state, action) => {
       const currentItems = current(state).items;
       const updatedItems = currentItems.map((item) => {
-        if (item.id === action.payload && item.quantity > 1) {
+        if (item.itemID === action.payload && item.quantity > 1) {
           return { ...item, quantity: item.quantity - 1 };
         }
         return item;

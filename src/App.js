@@ -38,7 +38,8 @@ const App = () => {
             path='/restaurants/:restaurantId'
             component={Restaurant}
           />
-          <Route exact path='/plate' component={Plate} />
+          <Route path='/plate/:modalName' component={Plate} />
+          <Route path='/plate' component={Plate} />
           <Route exact path='/payment-success' component={PaymentSuccess} />
           <Route exact path='/payment-failed' component={PaymentFailed} />
         </Switch>

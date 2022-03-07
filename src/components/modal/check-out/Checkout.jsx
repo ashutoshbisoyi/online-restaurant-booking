@@ -1,6 +1,5 @@
 import {
   Button,
-  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -9,13 +8,11 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
-import axios from 'axios';
 import React, { useState } from 'react';
-import { SmallButton } from '../button/Button';
+import { useHistory } from 'react-router-dom';
+import { SmallButton } from '../../button/Button';
 
-const Checkout = ({ open, handleClose, subTotal }) => {
-  const [loading, setLoading] = useState(false);
-
+const Checkout = ({ open, handleClose, subTotal, itemsInPlate }) => {
   const [details, setDetails] = useState({
     name: '',
     email: '',
@@ -23,28 +20,17 @@ const Checkout = ({ open, handleClose, subTotal }) => {
     amount: subTotal.toString(),
   });
 
-  const initiatePayment = () => {
-    setLoading(true);
-    console.log(
-      'inside function calling https://eatit-services.herokuapp.com/api/eatit/payment/initiate with data',
-      details
-    );
+  console.log(itemsInPlate);
 
-    axios
-      .post(
-        'https://eatit-services.herokuapp.com/api/eatit/payment/initiate',
-        details
-      )
-      .then((res) => {
-        setLoading(false);
-        console.log(res);
-        console.log('in then block');
-        window.location.href = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+  const history = useHistory();
+
+  const proceed = () => {
+    if (details.name === '' || details.email === '' || details.mobile === '') {
+      alert('Please enter all the details');
+    } else {
+      localStorage.setItem('userDetails', JSON.stringify(details));
+      history.push('/plate/orderSummary');
+    }
   };
 
   const handleChange = (name, e) => {
@@ -112,12 +98,8 @@ const Checkout = ({ open, handleClose, subTotal }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <SmallButton variant='contained' onClick={initiatePayment}>
-          {loading ? (
-            <CircularProgress color='inherit' size={20} />
-          ) : (
-            'Proceed for Payment'
-          )}
+        <SmallButton variant='contained' onClick={proceed}>
+          Proceed
         </SmallButton>
       </DialogActions>
     </Dialog>

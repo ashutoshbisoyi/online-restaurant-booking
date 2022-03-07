@@ -11,24 +11,27 @@ import {
 } from '../../features/plateSlice';
 
 const PlateItem = ({
-  name,
+  itemName,
   images,
-  price,
+  itemPrice,
   veg,
   quantity,
   menuType,
-  id,
+  itemID,
   showMessage,
 }) => {
   const dispatch = useDispatch();
+
   const handleQuantityIncrement = (id) => {
     dispatch(increaseQuantity(id));
   };
+
   const handleQuantityDecrement = (id) => {
     dispatch(decreaseQuantity(id));
   };
+
   const handleRemoveItem = (id) => {
-    showMessage(name);
+    showMessage(itemName);
     dispatch(removeItemFromPlate(id));
   };
 
@@ -47,13 +50,13 @@ const PlateItem = ({
             ></div>
           </div>
           <div className='col-9 col-md-4 col-lg-3 d-flex justify-content-md-center align-items-center mb-4 mb-md-0'>
-            <h5>{name}</h5>
+            <h5>{itemName}</h5>
           </div>
           <div className='col-lg-2 justify-center d-none d-lg-flex'>
             <span>{veg ? 'veg' : 'nonveg'}</span>
           </div>
           <div className='col-lg-1 justify-center d-none d-lg-flex'>
-            <span>{price}</span>
+            <span>{itemPrice}</span>
           </div>
           <div className='col-6 col-md-3 col-lg-2 d-flex justify-content-md-center align-items-center'>
             <div>
@@ -61,26 +64,26 @@ const PlateItem = ({
                 src={minusIcon}
                 alt='minus'
                 className='img-fluid actionIcon'
-                onClick={() => handleQuantityDecrement(id)}
+                onClick={() => handleQuantityDecrement(itemID)}
               />
               <span className='mx-3'>{quantity}</span>
               <img
                 src={plusIcon}
                 alt='plus'
                 className='img-fluid actionIcon'
-                onClick={() => handleQuantityIncrement(id)}
+                onClick={() => handleQuantityIncrement(itemID)}
               />
             </div>
           </div>
 
           <div className='col-6 col-md-2 d-flex justify-content-end justify-content-md-center align-items-center'>
-            <span className='total-price'>₹ {quantity * price}</span>
+            <span className='total-price'>₹ {quantity * itemPrice}</span>
           </div>
           <div className='col-12 col-md-2 col-lg-1 justify-center'>
             <img
               src={deleteIcon}
               alt='delete'
-              onClick={() => handleRemoveItem(id)}
+              onClick={() => handleRemoveItem(itemID)}
               className='img-fluid delete'
             />
           </div>

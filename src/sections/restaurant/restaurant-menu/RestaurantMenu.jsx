@@ -76,7 +76,11 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
                           )
                           .map((item, index) => (
                             <div className='px-3 ps-0' key={index}>
-                              <MenuItem restaurantId={restaurantId} {...item} />
+                              <MenuItem
+                                restaurantName={restaurantName}
+                                restaurantId={restaurantId}
+                                {...item}
+                              />
                             </div>
                           ))
                       ) : (

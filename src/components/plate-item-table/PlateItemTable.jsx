@@ -6,25 +6,47 @@ import PlateItem from '../plate-item/PlateItem';
 import { Alert, Snackbar } from '@mui/material';
 import Slide from '@mui/material/Slide';
 import { RegularButton } from '../button/Button';
-import Checkout from '../modal/Checkout';
+import Checkout from '../modal/check-out/Checkout';
+import OrderSummary from '../modal/order-summary/OrderSummary';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 function SlideTransition(props) {
   return <Slide {...props} direction='up' />;
 }
 
 const PlateItemTable = () => {
+  const [modals, setModals] = useState({
+    checkout: false,
+    orderSummary: false,
+  });
   const [subTotal, setSubTotal] = useState(0);
-  const [checkout, setCheckout] = useState(false);
   const [modal, setModal] = useState({
     visibility: false,
     itemName: '',
   });
+
+  const { modalName } = useParams();
+
+  useEffect(() => {
+    console.log(modalName);
+    if (modalName === 'checkout') {
+      setModals({ checkout: true, orderSummary: false });
+    } else if (modalName === 'orderSummary') {
+      setModals({ checkout: false, orderSummary: true });
+    } else {
+      setModals({ checkout: false, orderSummary: false });
+    }
+    console.log(modals);
+  }, [modalName]);
+
   const itemsInPlate = useSelector(selectPlateItems);
+  const history = useHistory();
+
   useEffect(() => {
     setSubTotal(
       itemsInPlate.reduce(
         (accumulator, current) =>
-          accumulator + current.price * current.quantity,
+          accumulator + current.itemPrice * current.quantity,
         0
       )
     );
@@ -46,7 +68,7 @@ const PlateItemTable = () => {
   const gst = (subTotal * 5) / 100;
   const platformFee = 29;
 
-  const handleCloseCheckout = () => setCheckout(false);
+  const handleCloseModal = () => history.push('/plate');
 
   return (
     <>
@@ -61,11 +83,20 @@ const PlateItemTable = () => {
           {modal.itemName} removed from your plate
         </Alert>
       </Snackbar>
-      {checkout && (
+      {modals.checkout && (
         <Checkout
-          open={checkout}
-          handleClose={handleCloseCheckout}
+          open={modals.checkout}
+          handleClose={handleCloseModal}
           subTotal={subTotal}
+          itemsInPlate={itemsInPlate}
+        />
+      )}
+      {modals.orderSummary && (
+        <OrderSummary
+          open={modals.orderSummary}
+          handleClose={handleCloseModal}
+          subTotal={subTotal}
+          itemsInPlate={itemsInPlate}
         />
       )}
       <div className='plate-item-table'>
@@ -109,12 +140,15 @@ const PlateItemTable = () => {
               Sub Total <span className='price'>₹ {subTotal}</span>
             </h4>
             <hr className='my-4' />
-            <RegularButton
-              variant='contained'
-              onClick={() => setCheckout(true)}
-            >
-              Proceed
-            </RegularButton>
+            <Link to='plate/checkout'>
+              <RegularButton
+                variant='contained'
+                // onClick={() => setCheckout(true)}
+              >
+                Proceed
+              </RegularButton>
+            </Link>
+            <h1>{modals.checkout}</h1>
           </div>
         </div>
       </div>
