@@ -29,6 +29,11 @@ const restroSchema = new mongoose.Schema({
         required: true,
         min: 3
     },
+    restaurantMail: {
+        type: String,
+        required: true,
+        min: 3
+    },
     location: {
         type: String,
         required: true,

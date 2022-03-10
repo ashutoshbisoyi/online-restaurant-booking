@@ -5,6 +5,7 @@ const addRestro = async (req, res) => {
     const restro = new restroSchema({
         restaurantID: uniqid('EatIt-'),
         restaurantName: req.body.restaurantName,
+        restaurantMail:req.body.restaurantMail,
         location: req.body.location,
         openTime: req.body.openTime,
         closeTime: req.body.closeTime,
