@@ -18,11 +18,9 @@ const MenuItem = ({
   veg,
   nonveg,
   itemID,
-  categoryID,
-  deleteMenu,
-  editMenu,
   restaurantId,
   restaurantName,
+  restaurantMail,
 }) => {
   const [modal, setModal] = useState({
     visibility: false,
@@ -54,6 +52,7 @@ const MenuItem = ({
           quantity: 1,
           restaurantId: restaurantId,
           restaurantName: restaurantName,
+          restaurantMail: restaurantMail,
         })
       );
     } else {

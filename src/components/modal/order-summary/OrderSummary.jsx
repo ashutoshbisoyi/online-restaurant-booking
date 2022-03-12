@@ -24,6 +24,7 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
       orderID: uniqueID,
       restaurantID: itemsInPlate[0].restaurantId,
       restaurantName: itemsInPlate[0].restaurantName,
+      restaurantMail: itemsInPlate[0].restaurantMail,
       orderItem: itemsInPlate,
       totalPrice: subTotal,
       buyerName: userDetails.name,

@@ -5,7 +5,12 @@ import Slider from 'react-slick';
 import plateIcon from '../../../assets/plate.png';
 import Status from '../../../components/status/Status';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
+const RestaurantMenu = ({
+  category,
+  restaurantName,
+  restaurantId,
+  restaurantMail,
+}) => {
   const [menuType, setMenuType] = useState('all');
   const settings = {
     dots: true,
@@ -79,6 +84,7 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
                               <MenuItem
                                 restaurantName={restaurantName}
                                 restaurantId={restaurantId}
+                                restaurantMail={restaurantMail}
                                 {...item}
                               />
                             </div>
@@ -106,6 +112,7 @@ const RestaurantMenu = ({ category, restaurantName, restaurantId }) => {
                                 <MenuItem
                                   restaurantName={restaurantName}
                                   restaurantId={restaurantId}
+                                  restaurantMail={restaurantMail}
                                   {...item}
                                 />
                               </div>
