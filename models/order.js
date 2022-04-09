@@ -43,6 +43,14 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    restaurantLocation: {
+        type: String,
+        required: true
+    },
+    restaurantMail: {
+        type: String,
+        required: true
+    },
     orderItem: [orderItemSchema],
     buyerName: {
         type: String,

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+  </head>
+  <body style="font-family: sans-serif; color: #5e5e5e">
+    <!-- <script>
+      //order details/item details
+      const orderDetails = '{{orderDetails}}';
+      // [
+      //   {
+      //     itemID: "item-id",
+      //     itemName: "item-name",
+      //     itemPrice: 44,
+      //     veg: true,
+      //     nonveg: false,
+      //     quantity: 3,
+      //     _id: "6228f9a1d218d5e4fbcba3a0",
+      //   },
+      //   {
+      //     itemID: "item-id",
+      //     itemName: "second-item-name",
+      //     itemPrice: 55,
+      //     veg: true,
+      //     nonveg: false,
+      //     quantity: 3,
+      //     _id: "6228f9a1d218d5e4fbcba3a0",
+      //   },
+      // ];
+
+      //total items
+      const numberOfItems = orderDetails.length;
+      document.getElementById("numberOfItems").innerHTML = numberOfItems;
+
+      //showing orders
+      const ordersList = document.getElementById("orders");
+      ordersList.innerHTML = orderDetails
+        .map((value, index) => {
+          return "<li>" + value.itemName + "</li>";
+        })
+        .join("");
+
+      //calculate total
+      const itemTotal = orderDetails.reduce(
+        (accumulator, current) =>
+          accumulator + current.itemPrice * current.quantity,
+        0
+      );
+      const gst = (itemTotal * 5) / 100;
+      const subTotal = itemTotal + gst;
+      document.getElementById("sub-total").innerHTML = subTotal;
+    </script> -->
+    <div style="max-width: 600px; margin: auto">
+      <img
+        src="https://drive.google.com/uc?export=view&id=1O1PONuPeM-eyxnK3hg14kVVKMlc60xig"
+        alt="eat-it logo"
+        style="max-width: 100px"
+      />
+      <hr style="opacity: 0.3" />
+      <p>Dear {{buyerName}},</p>
+      <p>Thank you for ordering from eatit. 🥰</p>
+      <p>
+        Your order with id <strong>{{orderID}}</strong> has confirmed 🎉.Take
+        your time, get ready and reach the restaurant to take away or dine in
+        for your ordered food items.
+      </p>
+      <img
+        src="http://www.washingtonpost.com/r/2010-2019/WashingtonPost/2017/03/29/Weekend/Images/Weekend0331methode.gif"
+        alt="food"
+        style="width: 100%"
+      />
+      <div>
+        <h4
+          style="
+            padding: 0.5em;
+            width: fit-content;
+            background-color: #f7951e;
+            color: #ffffff;
+          "
+        >
+          Order Details
+        </h4>
+        <p>You have ordered total <span id="numberOfItems"></span> items</p>
+        <p id="orders">{{orderDetails}}</p>
+        <p>Sub Total: {{totalPrice}} <span id="sub-total"></span>/-</p>
+        <p>{{restaurantName}}, {{restaurantLocation}}</p>
+      </div>
+      <hr style="opacity: 0.3" />
+      <p>
+        In case you face any difficulty, feel free to reach our customer care
+        representative at <strong>+919873566534</strong> or mail us at
+        <strong>help.eatit@gmail.com</strong>
+      </p>
+      <p>Thank You ❤️</p>
+    </div>
+  </body>
+</html>

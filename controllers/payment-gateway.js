@@ -1,6 +1,9 @@
 const orderSchema = require("../models/order");
 const Insta = require("instamojo-nodejs");
 const dotenv = require('dotenv');
+const nodemailer = require('nodemailer');
+const handlebars = require('handlebars');
+const fs = require('fs');
 
 dotenv.config();
 
@@ -8,6 +11,29 @@ dotenv.config();
 const BASE_URL = process.env.URL; // production
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
+
+var readHTMLFile = function (path, callback) {
+    fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
+        if (err) {
+            callback(err);
+            throw err;
+
+        }
+        else {
+            callback(null, html);
+        }
+    });
+};
+
+let transporter = nodemailer.createTransport({
+    host: 'smtp.zoho.in',
+    port: 465,
+    secure: true, //ssl
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
 
 Insta.setKeys(API_KEY, AUTH_KEY);
 Insta.isSandboxMode(true);
@@ -62,22 +88,65 @@ const paymentInit = async (req, res) => {
 };
 
 const paymentSuccess = async (req, res) => {
-    // Insta.getPaymentDetails(
-    //     req.query.payment_request_id,
-    //     req.query.payment_id,
-    //     function (error, response) {
-    //         if (error) {
-    //             return res.status(404).json({ status: false });
-    //         } else {
-    //             return res.status(200)
-    //                 .json(response);
-    //             // var temp = JSON.stringify(response);
-    //             // var responseData = JSON.parse(temp);
-    //             // console.log(responseData.payment_request);
-    //         }
-    //     });
-    if (req.query.payment_status === 'Credit')
-        return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
+    console.log(req.query);
+    if (req.query.payment_status === 'Credit') {
+        const reqID = req.query.payment_request_id;
+
+        const orderUpdate = await orderSchema.findOne({ "id": reqID });
+        // console.log(orderUpdate);
+        if (!orderUpdate)
+            return res.status(404).json({ status: false });
+        else {
+            var buyerEmail = orderUpdate.buyerEmail;
+            var buyerName = orderUpdate.buyerName;
+            var restroEmail = orderUpdate.restaurantEmail;
+            var totalPrice = orderUpdate.totalPrice;
+            var buyerOrderID = orderUpdate.orderID;
+            var buyerOrderItems = JSON.parse(JSON.stringify(orderUpdate.orderItem));
+            var restaurantName = orderUpdate.restaurantName;
+            var restaurantLocation = orderUpdate.restaurantLocation;
+            const itemDetails = buyerOrderItems
+                .map((value, index) => {
+                    return value.itemName;
+                })
+                .join(', ');
+            
+            // console.log(itemDetails);
+            // console.log(buyerName, buyerOrderID);
+
+            readHTMLFile(__dirname + '\\..\\views\\' + '\index.html', function (err, html) {
+                var template = handlebars.compile(html);
+                var replacements = {
+                    buyerName: buyerName,
+                    orderID: buyerOrderID,
+                    totalPrice: totalPrice,
+                    orderDetails: itemDetails,
+                    restaurantName: restaurantName,
+                    restaurantLocation: restaurantLocation
+                };
+                var htmlToSend = template(replacements);
+
+                // sending email
+                let mailOptions = {
+                    from: '"Eat-IT Services" noreply@goeatit.com', // TODO: email sender
+                    to: buyerEmail, // TODO: email receiver 'ashutoshbisoyi205@gmail.com',
+                    cc: restroEmail,
+                    subject: 'Congratulations! Your Order is Placed',
+                    html: htmlToSend
+                };
+                transporter.sendMail(mailOptions, (err, data) => {
+                    if (err) {
+                        console.log('Error occurs: ' + err);
+                    }
+                    else {
+                        console.log(`Order Placed Successfully for ${buyerEmail}\nStatus:`
+                            + data.response);
+                    }
+                });
+            });
+        }
+            return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
+    }
     else
         return res.status(200).redirect("https://eatit-services.netlify.app/payment-failed");
 };
