@@ -28,13 +28,22 @@ const Checkout = ({ open, handleClose, subTotal, itemsInPlate }) => {
     if (details.name === '' || details.email === '' || details.mobile === '') {
       alert('Please enter all the details');
     } else {
-      localStorage.setItem('userDetails', JSON.stringify(details));
-      history.push('/plate/orderSummary');
+      if (details.mobile.length > 10) {
+        alert('Mobile number should be of 10 digits');
+      } else {
+        localStorage.setItem('userDetails', JSON.stringify(details));
+        history.push('/plate/orderSummary');
+      }
     }
   };
 
   const handleChange = (name, e) => {
-    setDetails({ ...details, [name]: e.target.value });
+    if (name === 'mobile') {
+      details.mobile.length < 10 &&
+        setDetails({ ...details, [name]: e.target.value });
+    } else {
+      setDetails({ ...details, [name]: e.target.value });
+    }
   };
 
   return (

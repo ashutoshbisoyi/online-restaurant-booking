@@ -10,6 +10,7 @@ const RestaurantMenu = ({
   restaurantName,
   restaurantId,
   restaurantMail,
+  location,
 }) => {
   const [menuType, setMenuType] = useState('all');
   const settings = {
@@ -85,6 +86,7 @@ const RestaurantMenu = ({
                                 restaurantName={restaurantName}
                                 restaurantId={restaurantId}
                                 restaurantMail={restaurantMail}
+                                restaurantLocation={location}
                                 {...item}
                               />
                             </div>
@@ -113,6 +115,7 @@ const RestaurantMenu = ({
                                   restaurantName={restaurantName}
                                   restaurantId={restaurantId}
                                   restaurantMail={restaurantMail}
+                                  restaurantLocation={location}
                                   {...item}
                                 />
                               </div>
