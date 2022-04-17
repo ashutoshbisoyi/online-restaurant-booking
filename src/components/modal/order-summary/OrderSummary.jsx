@@ -82,6 +82,8 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
       });
   };
 
+  const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Order Summary</DialogTitle>
@@ -89,7 +91,7 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
         <DialogContentText>
           You have {itemsInPlate.length} items in your plate from{' '}
           {itemsInPlate[0].restaurantName}. Your order ID is{' '}
-          <strong>#EATIT00987</strong>
+          <strong>#EATIT{randomOrderId}</strong>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
