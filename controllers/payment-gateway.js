@@ -4,13 +4,17 @@ const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const handlebars = require('handlebars');
 const fs = require('fs');
-var path = __dirname + '\\..\\views\\' + '\index.html';
-console.log(path);
 
 dotenv.config();
 
-// const BASE_URL = process.env.TEST_URL; // testing
-const BASE_URL = process.env.URL; // production
+// testing
+// const BASE_URL = process.env.TEST_URL; 
+// var path = __dirname + '\\..\\views\\' + '\index.html';
+
+// production
+const path = __dirname + '/../views/' + '/index.html';
+const BASE_URL = process.env.URL; 
+
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
@@ -111,7 +115,6 @@ const paymentSuccess = async (req, res) => {
                     return value.itemName;
                 })
                 .join(', ');
-            var path = __dirname + '\\..\\views\\' + '\index.html';
             console.log(path);
             readHTMLFile(path, function (err, html) {
                 var template = handlebars.compile(html);
