@@ -113,6 +113,7 @@ const paymentSuccess = async (req, res) => {
             console.log(path);
             readHTMLFile(path, function (err, html) {
                 var template = handlebars.compile(html);
+                console.log(template);
                 var replacements = {
                     buyerName: buyerName,
                     orderID: buyerOrderID,
@@ -122,6 +123,7 @@ const paymentSuccess = async (req, res) => {
                     restaurantLocation: restaurantLocation
                 };
                 var htmlToSend = template(replacements);
+                console.log(htmlToSend);
                 // sending email
                 let mailOptions = {
                     from: '"Eat-IT Services" noreply@goeatit.com', // TODO: email sender
