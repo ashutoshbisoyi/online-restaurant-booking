@@ -17,7 +17,6 @@ var readHTMLFile = function (path, callback) {
         if (err) {
             callback(err);
             throw err;
-
         }
         else {
             callback(null, html);
@@ -69,16 +68,18 @@ const paymentInit = async (req, res) => {
         },
             function (err, docs) {
                 if (err) return res.status(404).json({ status: false });
-                else console.log("Updated Data : ", docs);
+                // else console.log("Updated Data : ", docs);
             });
     }
+
     Insta.createPayment(data, function (error, response) {
         if (error) {
             return res.status(404).json({ status: false });
         } else {
             var responseData = JSON.parse(response);
             // console.log(responseData.payment_request);
-            if (responseData.success === false) return res.status(404).json(responseData.message);
+            if (responseData.success === false)
+                return res.status(404).json(responseData.message);
             // res.send("Please check your email to make payment")
             updatePayment(responseData);
             return res.status(200).json(responseData.payment_request.longurl)
@@ -91,29 +92,23 @@ const paymentSuccess = async (req, res) => {
     console.log(req.query);
     if (req.query.payment_status === 'Credit') {
         const reqID = req.query.payment_request_id;
-
         const orderUpdate = await orderSchema.findOne({ "id": reqID });
-        // console.log(orderUpdate);
         if (!orderUpdate)
             return res.status(404).json({ status: false });
         else {
-            var buyerEmail = orderUpdate.buyerEmail;
-            var buyerName = orderUpdate.buyerName;
-            var restroEmail = orderUpdate.restaurantEmail;
-            var totalPrice = orderUpdate.totalPrice;
-            var buyerOrderID = orderUpdate.orderID;
-            var buyerOrderItems = JSON.parse(JSON.stringify(orderUpdate.orderItem));
-            var restaurantName = orderUpdate.restaurantName;
-            var restaurantLocation = orderUpdate.restaurantLocation;
+            const buyerEmail = orderUpdate.buyerEmail;
+            const buyerName = orderUpdate.buyerName;
+            const restroEmail = orderUpdate.restaurantMail;
+            const totalPrice = orderUpdate.totalPrice;
+            const buyerOrderID = orderUpdate.orderID;
+            const buyerOrderItems = JSON.parse(JSON.stringify(orderUpdate.orderItem));
+            const restaurantName = orderUpdate.restaurantName;
+            const restaurantLocation = orderUpdate.restaurantLocation;
             const itemDetails = buyerOrderItems
-                .map((value, index) => {
+                .map((value) => {
                     return value.itemName;
                 })
                 .join(', ');
-            
-            // console.log(itemDetails);
-            // console.log(buyerName, buyerOrderID);
-
             readHTMLFile(__dirname + '\\..\\views\\' + '\index.html', function (err, html) {
                 var template = handlebars.compile(html);
                 var replacements = {
@@ -125,12 +120,11 @@ const paymentSuccess = async (req, res) => {
                     restaurantLocation: restaurantLocation
                 };
                 var htmlToSend = template(replacements);
-
                 // sending email
                 let mailOptions = {
                     from: '"Eat-IT Services" noreply@goeatit.com', // TODO: email sender
                     to: buyerEmail, // TODO: email receiver 'ashutoshbisoyi205@gmail.com',
-                    cc: restroEmail,
+                    bcc: restroEmail,
                     subject: 'Congratulations! Your Order is Placed',
                     html: htmlToSend
                 };
@@ -145,7 +139,7 @@ const paymentSuccess = async (req, res) => {
                 });
             });
         }
-            return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
+                return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
     }
     else
         return res.status(200).redirect("https://eatit-services.netlify.app/payment-failed");

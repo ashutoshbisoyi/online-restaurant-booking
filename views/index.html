@@ -7,52 +7,6 @@
     <title>Order Confirmation</title>
   </head>
   <body style="font-family: sans-serif; color: #5e5e5e">
-    <!-- <script>
-      //order details/item details
-      const orderDetails = '{{orderDetails}}';
-      // [
-      //   {
-      //     itemID: "item-id",
-      //     itemName: "item-name",
-      //     itemPrice: 44,
-      //     veg: true,
-      //     nonveg: false,
-      //     quantity: 3,
-      //     _id: "6228f9a1d218d5e4fbcba3a0",
-      //   },
-      //   {
-      //     itemID: "item-id",
-      //     itemName: "second-item-name",
-      //     itemPrice: 55,
-      //     veg: true,
-      //     nonveg: false,
-      //     quantity: 3,
-      //     _id: "6228f9a1d218d5e4fbcba3a0",
-      //   },
-      // ];
-
-      //total items
-      const numberOfItems = orderDetails.length;
-      document.getElementById("numberOfItems").innerHTML = numberOfItems;
-
-      //showing orders
-      const ordersList = document.getElementById("orders");
-      ordersList.innerHTML = orderDetails
-        .map((value, index) => {
-          return "<li>" + value.itemName + "</li>";
-        })
-        .join("");
-
-      //calculate total
-      const itemTotal = orderDetails.reduce(
-        (accumulator, current) =>
-          accumulator + current.itemPrice * current.quantity,
-        0
-      );
-      const gst = (itemTotal * 5) / 100;
-      const subTotal = itemTotal + gst;
-      document.getElementById("sub-total").innerHTML = subTotal;
-    </script> -->
     <div style="max-width: 600px; margin: auto">
       <img
         src="https://drive.google.com/uc?export=view&id=1O1PONuPeM-eyxnK3hg14kVVKMlc60xig"
