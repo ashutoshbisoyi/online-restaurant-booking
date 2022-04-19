@@ -12,7 +12,7 @@ dotenv.config();
 // var path = __dirname + '\\..\\views\\' + '\index.html';
 
 // production
-const path = __dirname + '/../views/' + '/index.html';
+const path = __dirname + '/../views' + '/index.html';
 const BASE_URL = process.env.URL; 
 
 console.log(path);
