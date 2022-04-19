@@ -15,8 +15,6 @@ dotenv.config();
 const path = __dirname + '/../views' + '/index.html';
 const BASE_URL = process.env.URL; 
 
-console.log(path);
-
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
@@ -117,7 +115,6 @@ const paymentSuccess = async (req, res) => {
                     return value.itemName;
                 })
                 .join(', ');
-            console.log(path);
             readHTMLFile(path, function (err, html) {
                 var template = handlebars.compile(html);
                 console.log(template);
@@ -130,7 +127,6 @@ const paymentSuccess = async (req, res) => {
                     restaurantLocation: restaurantLocation
                 };
                 var htmlToSend = template(replacements);
-                console.log(htmlToSend);
                 // sending email
                 let mailOptions = {
                     from: '"Eat-IT Services" noreply@goeatit.com', // TODO: email sender
