@@ -109,7 +109,9 @@ const paymentSuccess = async (req, res) => {
                     return value.itemName;
                 })
                 .join(', ');
-            readHTMLFile(__dirname + '\\..\\views\\' + '\index.html', function (err, html) {
+            var path = __dirname + '\\..\\views\\' + '\index.html';
+            console.log(path);
+            readHTMLFile(path, function (err, html) {
                 var template = handlebars.compile(html);
                 var replacements = {
                     buyerName: buyerName,
