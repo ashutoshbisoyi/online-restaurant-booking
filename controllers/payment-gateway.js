@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const handlebars = require('handlebars');
 const fs = require('fs');
+var path = __dirname + '\\..\\views\\' + '\index.html';
+console.log(path);
 
 dotenv.config();
 
@@ -143,7 +145,7 @@ const paymentSuccess = async (req, res) => {
                 });
             });
         }
-                return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
+        return res.status(200).redirect("https://eatit-services.netlify.app/payment-success");
     }
     else
         return res.status(200).redirect("https://eatit-services.netlify.app/payment-failed");
