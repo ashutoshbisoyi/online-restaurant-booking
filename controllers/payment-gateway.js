@@ -15,6 +15,8 @@ dotenv.config();
 const path = __dirname + '/../views/' + '/index.html';
 const BASE_URL = process.env.URL; 
 
+console.log(path);
+
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
 
