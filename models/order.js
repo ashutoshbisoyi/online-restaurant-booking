@@ -30,6 +30,10 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
+    paymentReqId: {
+        type: String,
+        unique: true
+    },
     orderID: {
         type: String,
         required: true,
