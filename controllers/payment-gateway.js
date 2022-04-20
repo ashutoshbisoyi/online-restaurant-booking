@@ -8,7 +8,7 @@ const fs = require('fs');
 dotenv.config();
 
 // testing
-// const BASE_URL = process.env.TEST_URL; 
+// const BASE_URL = process.env.TEST_URL;
 // var path = __dirname + '\\..\\views\\' + '\index.html';
 
 // production
@@ -66,10 +66,12 @@ const paymentInit = async (req, res) => {
     data.phone = mobile; // REQUIRED
 
     async function updatePayment(responseData) {
-        const orderUpdate = await orderSchema.findOne({ "orderID": orderID });
+        var orderUpdate = await orderSchema.findOne({ "orderID": orderID });
         if (!orderUpdate)
             return res.status(404).json({ status: false });
+        // console.log(responseData.payment_request.id);
         orderSchema.findByIdAndUpdate(orderUpdate._id, {
+            paymentReqId: responseData.payment_request.id,
             paymentDetails: [responseData.payment_request]
         },
             function (err, docs) {
@@ -98,10 +100,13 @@ const paymentSuccess = async (req, res) => {
     console.log(req.query);
     if (req.query.payment_status === 'Credit') {
         const reqID = req.query.payment_request_id;
-        const orderUpdate = await orderSchema.findOne({ "id": reqID });
-        if (!orderUpdate)
+        // console.log(reqID);
+        const orderUpdate = await orderSchema.findOne({ "paymentReqId": reqID });
+        if (!orderUpdate) {
             return res.status(404).json({ status: false });
+        }
         else {
+            // console.log("Payment Success Console: ", orderUpdate);
             const buyerEmail = orderUpdate.buyerEmail;
             const buyerName = orderUpdate.buyerName;
             const restroEmail = orderUpdate.restaurantMail;
