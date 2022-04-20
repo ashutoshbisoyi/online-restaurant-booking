@@ -8,12 +8,12 @@ const fs = require('fs');
 dotenv.config();
 
 // testing
-const BASE_URL = process.env.TEST_URL; 
-var path = __dirname + '\\..\\views\\' + '\index.html';
+// const BASE_URL = process.env.TEST_URL; 
+// var path = __dirname + '\\..\\views\\' + '\index.html';
 
 // production
-// const path = __dirname + '/../views' + '/index.html';
-// const BASE_URL = process.env.URL; 
+const path = __dirname + '/../views' + '/index.html';
+const BASE_URL = process.env.URL; 
 
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
