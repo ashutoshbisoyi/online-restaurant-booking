@@ -72,13 +72,15 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
             window.location.href = res.data;
           })
           .catch((err) => {
-            console.log(err);
+            alert("Couldn't initiate payment. Please try again");
+            console.log('in catch', err);
             setLoading({ status: false, message: null });
           });
       })
       .catch((err) => {
         console.log(err);
         setLoading({ status: false, message: null });
+        alert('Ops! an error occurred. Please try again');
       });
   };
 
