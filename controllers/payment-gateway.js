@@ -13,7 +13,7 @@ dotenv.config();
 
 // production
 const path = __dirname + '/../views' + '/index.html';
-const BASE_URL = process.env.URL; 
+const BASE_URL = process.env.URL;
 
 const API_KEY = process.env.TEST_API_KEY;
 const AUTH_KEY = process.env.TEST_AUTH_KEY;
@@ -115,11 +115,12 @@ const paymentSuccess = async (req, res) => {
             const buyerOrderItems = JSON.parse(JSON.stringify(orderUpdate.orderItem));
             const restaurantName = orderUpdate.restaurantName;
             const restaurantLocation = orderUpdate.restaurantLocation;
-            const itemDetails = buyerOrderItems
-                .map((value) => {
-                    return value.itemName;
+            const itemDetails = orderUpdate.orderItem
+                .map((value, index) => {
+                    return `${value.itemName} [${value.quantity}]`;
                 })
                 .join(', ');
+            // console.log(itemDetails);
             readHTMLFile(path, function (err, html) {
                 var template = handlebars.compile(html);
                 var replacements = {
