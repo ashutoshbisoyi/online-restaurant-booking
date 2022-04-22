@@ -14,8 +14,9 @@ import { SmallButton } from '../../button/Button';
 
 const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
   const [loading, setLoading] = useState({ status: false, message: null });
-
-  const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+  const [randomOrderId, setorderId] = useState(
+    `#EATIT${Math.floor(1000 + Math.random() * 9000)}`
+  );
 
   const history = useHistory();
 
@@ -23,10 +24,12 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
     setLoading({ status: true, message: 'Confirming Order ' });
 
     // const uniqueID = `EATIT${Date.now()}`;
+    // const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+    // localStorage.setItem('orderId', randomOrderId);
 
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     const orderDetails = {
-      orderID: `#EATIT${randomOrderId}`,
+      orderID: randomOrderId,
       restaurantID: itemsInPlate[0].restaurantId,
       restaurantName: itemsInPlate[0].restaurantName,
       restaurantMail: itemsInPlate[0].restaurantMail,
@@ -56,9 +59,9 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
         const paymentDetails = {
           name: userDetails.name,
           email: userDetails.email,
-          amount: subTotal,
+          amount: subTotal.toString(),
           mobile: userDetails.mobile,
-          orderID: `#EATIT${randomOrderId}`,
+          orderID: randomOrderId,
         };
 
         console.log(
@@ -90,14 +93,20 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
       });
   };
 
+  // const currentOrderId = localStorage.getItem('orderId');
+
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Order Summary</DialogTitle>
       <DialogContent>
         <DialogContentText>
           You have {itemsInPlate.length} items in your plate from{' '}
-          {itemsInPlate[0].restaurantName}. Your order ID is{' '}
-          <strong>#EATIT{randomOrderId}</strong>
+          {itemsInPlate[0].restaurantName}.
+          {randomOrderId && (
+            <span>
+              Your order ID is <strong>{randomOrderId}</strong>
+            </span>
+          )}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
