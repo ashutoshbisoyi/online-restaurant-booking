@@ -9,19 +9,24 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { SmallButton } from '../../button/Button';
 
 const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
   const [loading, setLoading] = useState({ status: false, message: null });
 
+  const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+
+  const history = useHistory();
+
   const initiatePayment = () => {
     setLoading({ status: true, message: 'Confirming Order ' });
 
-    const uniqueID = `EATIT${Date.now()}`;
+    // const uniqueID = `EATIT${Date.now()}`;
 
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     const orderDetails = {
-      orderID: uniqueID,
+      orderID: `#EATIT${randomOrderId}`,
       restaurantID: itemsInPlate[0].restaurantId,
       restaurantName: itemsInPlate[0].restaurantName,
       restaurantMail: itemsInPlate[0].restaurantMail,
@@ -53,7 +58,7 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
           email: userDetails.email,
           amount: subTotal,
           mobile: userDetails.mobile,
-          orderID: uniqueID,
+          orderID: `#EATIT${randomOrderId}`,
         };
 
         console.log(
@@ -73,6 +78,7 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
           })
           .catch((err) => {
             alert("Couldn't initiate payment. Please try again");
+            history.push('/plate');
             console.log('in catch', err);
             setLoading({ status: false, message: null });
           });
@@ -83,8 +89,6 @@ const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
         alert('Ops! an error occurred. Please try again');
       });
   };
-
-  const randomOrderId = Math.floor(1000 + Math.random() * 9000);
 
   return (
     <Dialog open={open} onClose={handleClose}>

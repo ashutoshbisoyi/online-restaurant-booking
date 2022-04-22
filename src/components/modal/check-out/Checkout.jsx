@@ -20,7 +20,7 @@ const Checkout = ({ open, handleClose, subTotal, itemsInPlate }) => {
     amount: subTotal.toString(),
   });
 
-  console.log(itemsInPlate);
+  // console.log(itemsInPlate);
 
   const history = useHistory();
 
