@@ -7,16 +7,16 @@ const fs = require('fs');
 
 dotenv.config();
 
-// testing
-// const BASE_URL = process.env.TEST_URL;
+// testing-LOCALHOST
+// const BASE_URL = process.env.LOCALHOST;
 // var path = __dirname + '\\..\\views\\' + '\index.html';
 
 // production
 const path = __dirname + '/../views' + '/index.html';
 const BASE_URL = process.env.URL;
 
-const API_KEY = process.env.TEST_API_KEY;
-const AUTH_KEY = process.env.TEST_AUTH_KEY;
+const API_KEY = process.env.API_KEY;
+const AUTH_KEY = process.env.AUTH_KEY;
 
 var readHTMLFile = function (path, callback) {
     fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
