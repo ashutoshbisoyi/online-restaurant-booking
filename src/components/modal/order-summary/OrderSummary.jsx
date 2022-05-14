@@ -14,7 +14,7 @@ import { SmallButton } from '../../button/Button';
 
 const OrderSummary = ({ open, handleClose, subTotal, itemsInPlate }) => {
   const [loading, setLoading] = useState({ status: false, message: null });
-  const [randomOrderId, setorderId] = useState(
+  const [randomOrderId] = useState(
     `#EATIT${Math.floor(1000 + Math.random() * 9000)}`
   );
 

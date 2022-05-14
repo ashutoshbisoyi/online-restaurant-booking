@@ -87,6 +87,7 @@ const RestaurantMenu = ({
                                 restaurantId={restaurantId}
                                 restaurantMail={restaurantMail}
                                 restaurantLocation={location}
+                                category={value.categoryName}
                                 {...item}
                               />
                             </div>
@@ -116,6 +117,7 @@ const RestaurantMenu = ({
                                   restaurantId={restaurantId}
                                   restaurantMail={restaurantMail}
                                   restaurantLocation={location}
+                                  category={value.categoryName}
                                   {...item}
                                 />
                               </div>

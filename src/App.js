@@ -19,6 +19,7 @@ import Restaurants from './sections/resturants/Restaurants';
 import MuiBar from './components/mui-bar/MuiBar';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFailed from './pages/PaymentFailed';
+
 const App = () => {
   useEffect(() => {
     Aos.init({
@@ -26,6 +27,7 @@ const App = () => {
       offset: 0,
     });
   }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Router>

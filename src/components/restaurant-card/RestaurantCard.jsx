@@ -29,6 +29,19 @@ const RestaurantCard = ({
     slidesToScroll: 1,
     arrows: false,
   };
+
+  const checkTimeMethod = (time) => {
+    let firstTwoCharacters = time.substring(0, 2);
+    let lastTwoCharacters = time.substring(3, 6);
+    const checkedFirstTwoCharacters =
+      firstTwoCharacters > 12 ? firstTwoCharacters - 12 : firstTwoCharacters;
+    console.log('checkedFirstTwoCharacters', checkedFirstTwoCharacters);
+    const timeTwoShow = `${checkedFirstTwoCharacters}:${lastTwoCharacters} ${
+      firstTwoCharacters > 12 ? 'PM' : 'AM'
+    }`;
+    return timeTwoShow;
+  };
+
   return (
     <div className='restaurant-card'>
       <div className='top'>
@@ -68,13 +81,13 @@ const RestaurantCard = ({
           )}
         </div>
         <div className='mt-3 d-flex justify-content-between align-items-center text-secondary'>
-          <span className='available'>
+          {/* <span className='available'>
             <img src={available} alt='available' className='img-fluid me-1' />{' '}
             Available
-          </span>
+          </span> */}
           <span>
             <img src={timingIcon} alt='location' className='img-fluid me-2' />
-            {`${openTime} - ${closeTime}`}
+            {`${checkTimeMethod(openTime)} - ${checkTimeMethod(closeTime)}`}
           </span>
         </div>
         <div>

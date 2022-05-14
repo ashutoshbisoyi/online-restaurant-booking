@@ -100,7 +100,7 @@ export default function MuiBar() {
                   Restaurants
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   exact
                   to='/about'
@@ -109,7 +109,7 @@ export default function MuiBar() {
                 >
                   About Us
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
             <div className='mx-5'>
               <Link to='/plate'>

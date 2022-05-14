@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FeaturedRestaurants.scss';
-import RestaurantCard from '../../../components/restaurant-card/RestaurantCard';
 import forkIcon from '../../../assets/fork.png';
-import { useEffect } from 'react';
 import axios from 'axios';
 import Loading from '../../../components/loading/Loading';
 import Status from '../../../components/status/Status';
+import RestaurantCard from '../../../components/restaurant-card/RestaurantCard';
+
 const FeaturedRestaurants = () => {
   const [loading, setLoading] = useState(false);
   const [restaurants, setRestaurants] = useState(null);
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -16,13 +17,12 @@ const FeaturedRestaurants = () => {
       .then((res) => {
         setLoading(false);
         setRestaurants(res.data);
-        console.log(res);
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   }, []);
+
   return (
     <section className='container-fluid restaurants'>
       <div className='container'>

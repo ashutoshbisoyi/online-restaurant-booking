@@ -22,6 +22,7 @@ const MenuItem = ({
   restaurantName,
   restaurantMail,
   restaurantLocation,
+  category,
 }) => {
   const [modal, setModal] = useState({
     visibility: false,
@@ -55,6 +56,7 @@ const MenuItem = ({
           restaurantName: restaurantName,
           restaurantMail: restaurantMail,
           restaurantLocation: restaurantLocation,
+          category: category,
         })
       );
     } else {

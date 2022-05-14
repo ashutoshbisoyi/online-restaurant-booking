@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Restaurants.scss';
 import forkIcon from '../../assets/fork.png';
-import RestaurantCard from '../../components/restaurant-card/RestaurantCard';
 import axios from 'axios';
 import Loading from '../../components/loading/Loading';
 import Status from '../../components/status/Status';
+import RestaurantCard from '../../components/restaurant-card/RestaurantCard';
+
 const Restaurants = () => {
   const [loading, setLoading] = useState(false);
   const [restaurants, setRestaurants] = useState(null);
@@ -16,10 +17,8 @@ const Restaurants = () => {
       .then((res) => {
         setLoading(false);
         setRestaurants(res.data);
-        console.log(res);
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   }, []);

@@ -9,6 +9,7 @@ import {
   decreaseQuantity,
   removeItemFromPlate,
 } from '../../features/plateSlice';
+import { Badge, Chip } from '@mui/material';
 
 const PlateItem = ({
   itemName,
@@ -19,6 +20,7 @@ const PlateItem = ({
   menuType,
   itemID,
   showMessage,
+  category,
 }) => {
   const dispatch = useDispatch();
 
@@ -50,7 +52,8 @@ const PlateItem = ({
             ></div>
           </div>
           <div className='col-9 col-md-4 col-lg-3 d-flex justify-content-md-center align-items-center mb-4 mb-md-0'>
-            <h5>{itemName}</h5>
+            <h5 className='me-2 mb-0'>{itemName}</h5>
+            <Chip label={category} size='small' />
           </div>
           <div className='col-lg-2 justify-center d-none d-lg-flex'>
             <span>{veg ? 'veg' : 'nonveg'}</span>

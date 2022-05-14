@@ -40,6 +40,7 @@ const PlateItemTable = () => {
   }, [modalName]);
 
   const itemsInPlate = useSelector(selectPlateItems);
+  console.log(itemsInPlate);
   const history = useHistory();
 
   useEffect(() => {
@@ -69,6 +70,16 @@ const PlateItemTable = () => {
   const platformFee = 29;
 
   const handleCloseModal = () => history.push('/plate');
+
+  const groupBy = (key) => (array) =>
+    array.reduce((objectsByKeyValue, obj) => {
+      const value = obj[key];
+      objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+      return objectsByKeyValue;
+    }, {});
+
+  const groupByCat = groupBy('category');
+  console.log(groupByCat(itemsInPlate));
 
   return (
     <>

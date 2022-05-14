@@ -63,7 +63,7 @@ const NavigationBar = () => {
                 Restaurants
               </NavLink>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <NavLink
                 exact
                 to='/about'
@@ -72,7 +72,7 @@ const NavigationBar = () => {
               >
                 About Us
               </NavLink>
-            </li>
+            </li> */}
           </ul>
           <div className='d-flex justify-content-center align-items-center'>
             <div className='plate-container d-none d-lg-block me-5'>
@@ -86,11 +86,11 @@ const NavigationBar = () => {
                 </Badge>
               </NavLink>
             </div>
-            <div className='d-flex justify-content-center'>
+            {/* <div className='d-flex justify-content-center'>
               <RegularButton variant='contained' color='primary'>
                 Contact Us
               </RegularButton>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

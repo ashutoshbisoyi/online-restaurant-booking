@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import './Hero.scss';
 import Alert from '@mui/material/Alert';
-// import heroImage from '../../../assets/hero3.svg'; //3
 import instagram from '../../../assets/instagram.png';
 import facebook from '../../../assets/facebook.png';
 import twitter from '../../../assets/twitter.png';
+
 const Hero = () => {
-  const [showLocaitonMessage, setShowLocaitonMessage] = useState(false);
+  const [showLocationMessage, setShowLocationMessage] = useState(false);
+
   useEffect(() => {
     const status = localStorage.getItem('showLocationMessage');
-    console.log(status);
     if (status === 'true') {
-      console.log('inside if');
-      setShowLocaitonMessage(true);
+      setShowLocationMessage(true);
     } else {
-      console.log('inside else');
-      setShowLocaitonMessage(false);
+      setShowLocationMessage(false);
     }
   }, []);
+
   const closeLocationMessage = () => {
     localStorage.setItem('showLocationMessage', false);
-    setShowLocaitonMessage(false);
+    setShowLocationMessage(false);
   };
+
   return (
     <section className='hero container-fluid'>
-      {showLocaitonMessage && (
+      {showLocationMessage && (
         <div className='pt-2'>
           <Alert severity='warning' onClose={closeLocationMessage}>
             For now eat-it is only operating at Bhubaneswar and nearby areas. We
