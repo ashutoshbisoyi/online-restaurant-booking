@@ -53,7 +53,7 @@ const PlateItemTable = () => {
     );
   }, [itemsInPlate]);
 
-  const showMessage = (name) => {
+  const showMessage = name => {
     setModal({
       visibility: true,
       itemName: name,
@@ -71,7 +71,7 @@ const PlateItemTable = () => {
 
   const handleCloseModal = () => history.push('/plate');
 
-  const groupBy = (key) => (array) =>
+  const groupBy = key => array =>
     array.reduce((objectsByKeyValue, obj) => {
       const value = obj[key];
       objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
@@ -142,10 +142,7 @@ const PlateItemTable = () => {
               Plate Price <span className='price'>₹ {subTotal}</span>
             </p>
             <p>
-              GST <span className='price'>₹ {gst}</span>
-            </p>
-            <p>
-              Platform Fees <span className='price'>₹ {platformFee}</span>
+              GST (INC.)<span className='price'>18%</span>
             </p>
             <h4>
               Sub Total <span className='price'>₹ {subTotal}</span>

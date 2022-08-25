@@ -9,7 +9,16 @@
 .search-icon {
   color: #838383;
 }
-
+.mobile-menu {
+  li {
+    padding-top: 0;
+    padding-bottom: 0;
+    color: $black;
+    span {
+      height: min-content;
+    }
+  }
+}
 .css-1kpdewa-MuiAutocomplete-root .MuiFilledInput-root {
   padding: 0.5em !important;
 }

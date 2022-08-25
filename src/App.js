@@ -19,6 +19,7 @@ import Restaurants from './sections/resturants/Restaurants';
 import MuiBar from './components/mui-bar/MuiBar';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFailed from './pages/PaymentFailed';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   useEffect(() => {
@@ -40,6 +41,7 @@ const App = () => {
             path='/restaurants/:restaurantId'
             component={Restaurant}
           />
+          <Route exact path='/about' component={AboutUs} />
           <Route path='/plate/:modalName' component={Plate} />
           <Route path='/plate' component={Plate} />
           <Route exact path='/payment-success' component={PaymentSuccess} />

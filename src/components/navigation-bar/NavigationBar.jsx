@@ -1,7 +1,6 @@
 import React from 'react';
 import './NavigationBar.scss';
 import { Link, NavLink } from 'react-router-dom';
-import { RegularButton } from '../button/Button';
 import hamburgerIcon from '../../assets/hamburger.png';
 import plateIcon from '../../assets/food-plate.png';
 import { Badge } from '@mui/material';
@@ -63,7 +62,7 @@ const NavigationBar = () => {
                 Restaurants
               </NavLink>
             </li>
-            {/* <li className='nav-item'>
+            <li className='nav-item'>
               <NavLink
                 exact
                 to='/about'
@@ -72,7 +71,7 @@ const NavigationBar = () => {
               >
                 About Us
               </NavLink>
-            </li> */}
+            </li>
           </ul>
           <div className='d-flex justify-content-center align-items-center'>
             <div className='plate-container d-none d-lg-block me-5'>

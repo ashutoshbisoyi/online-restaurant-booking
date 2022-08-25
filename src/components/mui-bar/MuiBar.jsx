@@ -27,7 +27,7 @@ export default function MuiBar() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMobileMenuOpen = (event) => {
+  const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
@@ -47,10 +47,27 @@ export default function MuiBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      className='mobile-menu'
     >
-      <MenuItem>Home</MenuItem>
-      <MenuItem>Restaurants</MenuItem>
-      <MenuItem>About Us</MenuItem>
+      <NavLink exact to='/' className='nav-link' activeClassName='nav-active'>
+        <MenuItem>Home</MenuItem>
+      </NavLink>
+      <NavLink
+        exact
+        to='/restaurant'
+        className='nav-link'
+        activeClassName='nav-active'
+      >
+        <MenuItem>Restaurants</MenuItem>
+      </NavLink>
+      <NavLink
+        exact
+        to='/about'
+        className='nav-link'
+        activeClassName='nav-active'
+      >
+        <MenuItem>About Us</MenuItem>
+      </NavLink>
     </Menu>
   );
 
@@ -100,7 +117,7 @@ export default function MuiBar() {
                   Restaurants
                 </NavLink>
               </li>
-              {/* <li>
+              <li>
                 <NavLink
                   exact
                   to='/about'
@@ -109,7 +126,7 @@ export default function MuiBar() {
                 >
                   About Us
                 </NavLink>
-              </li> */}
+              </li>
             </ul>
             <div className='mx-5'>
               <Link to='/plate'>
