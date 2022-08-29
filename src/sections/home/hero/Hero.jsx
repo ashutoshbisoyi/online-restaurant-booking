@@ -58,35 +58,23 @@ const Hero = () => {
         </div>
       </div>
       <div className='block'></div>
-      <ul className='social-media'>
+      {/* <ul className='social-media'>
         <li>
-          <a
-            href='https://www.linkedin.com/in/ashutoshbisoyi/'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <a href='#' target='_blank' rel='noreferrer'>
             <img src={twitter} alt='instagram' className='img-fluid' />
           </a>
         </li>
         <li>
-          <a
-            href='https://www.linkedin.com/in/ashutoshbisoyi/'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <a href='#' target='_blank' rel='noreferrer'>
             <img src={facebook} alt='instagram' className='img-fluid' />
           </a>
         </li>
         <li>
-          <a
-            href='https://www.linkedin.com/in/ashutoshbisoyi/'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <a href='#' target='_blank' rel='noreferrer'>
             <img src={instagram} alt='instagram' className='img-fluid' />
           </a>
         </li>
-      </ul>
+      </ul> */}
     </section>
   );
 };

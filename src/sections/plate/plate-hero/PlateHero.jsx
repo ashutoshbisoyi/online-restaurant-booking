@@ -1,9 +1,10 @@
 import React from 'react';
+import AboutHeader from '../../about/header/AboutHeader';
 import './PlateHero.scss';
 const PlateHero = () => {
   return (
     <section className='container plate-hero'>
-      <div className='banner'></div>
+      <AboutHeader title='Your Plate' />
     </section>
   );
 };
